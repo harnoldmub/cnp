@@ -3,44 +3,31 @@ import PageHeader from "@/components/PageHeader";
 import SpeakerCard from "@/components/SpeakerCard";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import speaker1 from "@assets/stock_images/professional_african_7fc83f19.jpg";
-import speaker2 from "@assets/stock_images/professional_african_f534922c.jpg";
-import speaker3 from "@assets/stock_images/professional_african_f5dd8be8.jpg";
-import speaker4 from "@assets/stock_images/professional_african_3bccf198.jpg";
-import speaker5 from "@assets/stock_images/professional_african_c3cc3504.jpg";
-import speaker6 from "@assets/stock_images/professional_african_aa463827.jpg";
+import danieleSassou1 from "@assets/Daniele_Sassou_Nguesso_1765309986120.jpg";
+import danieleSassou2 from "@assets/Danièle_Sassou_Nguesso_1765309986120.jpg";
+import malumaMunongo from "@assets/Maluma_Munongo_Claude_1765309986121.jpg";
+import yvesKabongo from "@assets/Yves_kabongo_1765309986121.jpg";
 
-// todo: remove mock functionality
 const speakers = [
   {
-    name: "Marie Lumbala",
-    role: "Directrice Générale, Congo Tech",
-    image: speaker1,
+    name: "Danièle Sassou Nguesso",
+    role: "Présidente de la Fondation Perspectives d'Avenir",
+    image: danieleSassou2,
   },
   {
-    name: "Patrick Mwamba",
-    role: "Fondateur, Africa Invest Group",
-    image: speaker4,
+    name: "Maluma Munongo Claude",
+    role: "Entrepreneur & Investisseur",
+    image: malumaMunongo,
   },
   {
-    name: "Cécile Nsimba",
-    role: "Présidente, Diaspora Connect",
-    image: speaker2,
+    name: "Yves Kabongo",
+    role: "Expert en Développement Économique",
+    image: yvesKabongo,
   },
   {
-    name: "Jean-Claude Kabongo",
-    role: "Économiste, Banque Mondiale",
-    image: speaker5,
-  },
-  {
-    name: "Aminata Beko",
-    role: "CEO, Kinshasa Fashion Week",
-    image: speaker3,
-  },
-  {
-    name: "Michel Tshombe",
-    role: "Directeur, Chambre de Commerce",
-    image: speaker6,
+    name: "Danièle Sassou Nguesso",
+    role: "Ambassadrice de la Culture Congolaise",
+    image: danieleSassou1,
   },
 ];
 
@@ -51,14 +38,22 @@ export default function Intervenants() {
       <main>
         <PageHeader
           title="Intervenants"
-          subtitle="Les acteurs clés de cette 7ème édition"
+          subtitle="Les acteurs clés de cette 7ème édition - Tonga Mboka"
         />
 
         <section className="py-16 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {speakers.map((speaker) => (
-                <SpeakerCard key={speaker.name} {...speaker} />
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Nos Intervenants de Prestige
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Des personnalités influentes qui partagent leur vision pour le Congo de demain
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {speakers.map((speaker, index) => (
+                <SpeakerCard key={`${speaker.name}-${index}`} {...speaker} />
               ))}
             </div>
           </div>

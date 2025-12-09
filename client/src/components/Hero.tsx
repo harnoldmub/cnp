@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import heroImage from "@assets/Slider-CNP-1-scaled_1765307996148.png";
+import eventPoster from "@assets/IMG_2265_1765309764526.jpg";
+import tongaMbokaLogo from "@assets/Logo-PNG-01_1765309862074.png";
 import bannerBg from "@assets/bannerBG-2_1765307996147.jpg";
 
 export default function Hero() {
@@ -15,26 +16,43 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-16 lg:py-0">
           <div className="text-white space-y-6">
-            <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full uppercase tracking-wide">
-              7ème Édition
-            </span>
+            <div className="flex items-center gap-4 mb-2">
+              <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full uppercase tracking-wide">
+                7ème Édition
+              </span>
+              <span className="text-white/60 text-sm uppercase tracking-wide">
+                Salon Socio-Économique & Culturel Congolais
+              </span>
+            </div>
+            <img 
+              src={tongaMbokaLogo} 
+              alt="Tonga Mboka - Construire le Pays" 
+              className="h-20 md:h-28 w-auto"
+            />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-              Premier salon
+              Le Congo
               <br />
-              socio-culturel
-              <br />
-              congolais en
-              <br />
-              Europe, de
-              <br />
-              <span className="text-primary">retour !</span>
+              de <span className="text-primary">Demain</span>
             </h1>
             <p className="text-lg sm:text-xl text-white/80 max-w-md">
-              7ème édition à Paris, Kinshasa et Kolwezi
-              <br />
-              27 & 28 Septembre 2025
+              1ère plateforme socio-économique & culturelle congolaise en Europe
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-6 text-sm text-white/70">
+              <div>
+                <span className="text-primary font-semibold">DATE</span>
+                <p className="text-white font-bold text-lg">27-28 Sept. 2025</p>
+              </div>
+              <div>
+                <span className="text-primary font-semibold">HEURE</span>
+                <p className="text-white font-bold text-lg">10H00 - 20H00</p>
+              </div>
+              <div>
+                <span className="text-primary font-semibold">LIEU</span>
+                <p className="text-white font-bold">Espace Charenton</p>
+                <p className="text-white/60 text-xs">327 rue de Charenton, 75012 Paris</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-4 pt-2">
               <Button
                 size="lg"
                 className="rounded-full px-8 text-base uppercase font-semibold"
@@ -53,20 +71,15 @@ export default function Hero() {
                 </Button>
               </Link>
             </div>
-            <div className="flex gap-2 pt-4">
-              <span className="w-3 h-3 rounded-full bg-primary" />
-              <span className="w-3 h-3 rounded-full bg-white/30" />
-            </div>
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="relative rounded-lg overflow-hidden">
+            <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
-                src={heroImage}
-                alt="Congo Na Paris 2025"
+                src={eventPoster}
+                alt="Congo Na Paris 2025 - Tonga Mboka"
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/60 to-transparent" />
             </div>
           </div>
         </div>
