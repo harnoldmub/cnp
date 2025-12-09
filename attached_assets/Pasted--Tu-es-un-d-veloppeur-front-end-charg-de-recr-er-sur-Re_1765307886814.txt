@@ -1,0 +1,257 @@
+
+Tu es un développeur front-end chargé de recréer sur Replit un site vitrine inspiré de https://congonaparis.fr pour l’événement « Congo Na Paris ».
+
+========================
+1. STACK & STRUCTURE
+========================
+- Utilise un projet simple HTML / CSS / JavaScript (pas besoin de framework).
+- Arborescence :
+  - index.html  (Accueil)
+  - presentation.html
+  - contact.html
+  - programme.html
+  - intervenants.html
+  - partenaires.html
+  - participer.html (page d’info générale / redirection stands + billetterie + partenariat)
+  - magazine.html (liste des articles)
+  - style.css (styles globaux)
+  - main.js (petites interactions : menu mobile, scroll vers sections, bouton "back to top")
+
+- Le design doit être **responsive** (desktop, tablette, mobile).
+
+========================
+2. IDENTITÉ GRAPHIQUE
+========================
+Couleurs (proches de l’original) :
+- Bleu nuit principal : #050816 (fond de header, sections sombres)
+- Rouge vif principal : #FF3333 (boutons, chiffres, tags)
+- Blanc : #FFFFFF (texte et fonds clairs)
+- Gris très clair : #F5F5F5 (fonds de blocs clairs)
+- Violet foncé d’accent pour les pastilles / bullets : #3E2A54
+
+Typographies :
+- Police principale (titres et menus) : "Poppins", sans-serif
+- Police secondaire (paragraphes) : "Inter" ou "Open Sans", sans-serif
+- Espacements généreux, grands titres, tout en majuscules pour certains blocs (BILLETERIE, MAGAZINE, etc.).
+
+Boutons :
+- Forme : pilule / arrondis forts (border-radius: 999px).
+- Couleur fond : rouge (#FF3333).
+- Texte blanc en uppercase (ex : "BILLETERIE", "S’ABONNER").
+- Effet hover : légère augmentation de luminosité + ombre douce.
+
+Images :
+- Utilise des images de placeholders libres (ou une couleur de fond) avec un filtre rouge / bleu nuit pour rappeler le site.
+- Toutes les images doivent être en `object-fit: cover;` avec des coins légèrement arrondis.
+
+========================
+3. HEADER & NAVIGATION
+========================
+Présent sur TOUTES les pages.
+
+Layout (desktop) :
+- Barre blanche en haut, pleine largeur.
+- À gauche : logo "CONGO NA PARIS" sur deux lignes, en texte stylisé (ou image si dispo).
+- Au centre : menu horizontal.
+- À droite : icône loupe (recherche) – pas besoin de vraie fonctionnalité, juste décorative.
+
+Menu :
+- Items : "Accueil", "A propos" (menu déroulant : "Présentation", "Contact"), "Edition 2025" (déroulant : "Programme", "Intervenants", "Partenaires"), "Participer", "CNP Mag", "CNP TV".
+- CNP TV pointe vers une URL externe (par ex. YouTube).
+- L’item de la page active a un petit soulignement rouge.
+
+Version mobile :
+- Logo à gauche, icône de menu (hamburger) à droite.
+- Quand on clique sur le hamburger : menu en overlay ou en dropdown occupant la largeur.
+
+========================
+4. PAGE D’ACCUEIL (index.html)
+========================
+
+4.1. Hero principal (premier écran)
+- Fond : côté gauche bleu nuit avec motifs circulaires (peut être un simple gradient + pseudo-éléments), côté droit image à dominante rouge (photo de public / enfants / événement).
+- Disposition : deux colonnes (texte à gauche, image à droite).
+
+Texte à gauche :
+- Petit tag en rouge (facultatif).
+- Grand titre sur plusieurs lignes, très gros, blanc :
+  "Premier salon
+   socio-culturel
+   congolais en
+   Europe, de
+   retour !"
+- Sous-titre en plus petit, blanc : mention de la "7ᵉ édition à Paris, Kinshasa et Kolwezi".
+- (Optionnel) deux petits points rouges pour la navigation de slides – décoratif uniquement.
+
+4.2. Bandeau chiffres clés
+- Section immédiatement sous le hero, fond rouge.
+- 4 blocs centrés horizontalement :
+  - "+18500" — label "VISITEURS"
+  - "237" — label "STANDS"
+  - "+130" — label "INTERVENANTS"
+  - "6" — label "ÉDITIONS PRÉCÉDENTES"
+- Gros chiffres blancs, label en uppercase plus petit.
+
+4.3. Bloc "Pourquoi nous choisir ?"
+Section sur fond blanc, deux colonnes :
+
+Colonne gauche :
+- Label rouge : "[CNP 7ᵉ ÉDITION]" (en petites caps).
+- Titre noir : "Pourquoi nous choisir ?"
+- Paragraphe de présentation (texte en français, peut être inspiré du site mais tu peux utiliser un texte de démonstration).
+- Liste à puces (noires) avec 4 items :
+  - Rencontrer les acteurs clés de la diaspora et du Congo
+  - Découvrir les opportunités économiques et culturelles
+  - Participer à des conférences et des ateliers inspirants
+  - S’immerger dans une ambiance festive et constructive
+- Bouton rouge "En savoir plus" menant vers presentation.html.
+
+Colonne droite :
+- Grande image type conférence avec un bouton "play" rouge au centre (rond), comme une vidéo.
+
+4.4. Bloc "Une 7ᵉ édition exceptionnelle / Billetterie"
+- Grande section pleine largeur avec image de fond (photo d’auditorium), overlay sombre.
+- En très grand, en arrière-plan : texte semi-transparent "BILLETTERIE".
+- Par-dessus :
+  - Titre blanc : "Réservez votre place !"
+  - Paragraphe blanc de quelques lignes.
+  - Bouton rouge "BILLETERIE" menant à une page billeterie.html ou un lien externe.
+
+4.5. Trois cartes (Programme / Devenir exposant / Regarder CNP TV)
+Section juste sous la billetterie :
+
+- 3 cartes alignées (en colonne sur mobile).
+- Chaque carte : image en haut (filtre sombre), zone de texte en bas sur fond sombre.
+
+Carte 1 :
+- Titre : "Programme 2025"
+- Texte bref.
+- Bouton texte "En savoir plus" (lien programme.html).
+
+Carte 2 :
+- Titre : "Devenir Exposant"
+- Texte bref.
+- Lien mailto: "Commercial@congonaparis.fr".
+
+Carte 3 :
+- Titre : "Regarder CNP TV"
+- Texte bref.
+- Bouton/lien vers la chaîne YouTube.
+
+4.6. Section "MAGAZINE / CNP MAG"
+- Fond gris très foncé (#151515 ~), grandes lettres "MAGAZINE" en arrière-plan (en énorme, en transparence).
+- Titre centré blanc : "CNP MAG".
+- Sous le titre : 3 cartes d’articles de blog.
+
+Chaque carte :
+- Image en haut.
+- Tag rouge (par ex. "CULTURE & DIASPORA", "CNP MAG", "ÉVÉNEMENTS").
+- Date type "[ 08/31/2025 ]".
+- Titre en 2 lignes max.
+- Paragraphe d’extrait (lorem ipsum).
+- Les cartes renvoient vers magazine.html ou vers de faux articles.
+
+4.7. Bouton "Back to top"
+- En bas à droite, sur toutes les pages, un bouton rond rouge avec une flèche vers le haut.
+- Position : fixed, bottom: 20px, right: 20px.
+- Clique -> scroll smooth vers le haut.
+
+========================
+5. FOOTER (toutes les pages)
+========================
+Fond bleu nuit presque noir.
+
+Structure :
+- À gauche : logo "CONGO NA PARIS" + baseline "CONNECTER LA DIASPORA AUX CONGO" (texte).
+- Colonne "Édition 2025" :
+  - Liens : Programme, Intervenants, Partenaires.
+- Colonne "Participer" :
+  - Liens : Stands, Billetterie, Partenariat.
+- Colonne "Newsletter" :
+  - Champ email (input) avec placeholder "Votre adresse email".
+  - Bouton rouge "S’ABONNER".
+  - En-dessous : petite mention "Laissez ce champ vide si vous êtes humain :" (tu peux simuler un faux champ caché, sans logique spam réelle).
+
+- Tout en bas : bande décorative avec motifs triangulaires (peut être faite en background-image ou pattern simple).
+- Texte centré : "Copyright © 2025 Congo Na Paris. Tous droits réservés."
+
+========================
+6. AUTRES PAGES (structure simple)
+========================
+
+6.1. presentation
+- Titre : "Présentation".
+- Image large en haut (bannière).
+- Bloc de texte décrivant l’association et sa mission (tu peux utiliser un texte de démonstration).
+- Liste "Nos valeurs" avec 3 puces (Connecter / Construire / Découvrir).
+- Liste "Nos services" avec 3 puces (Accompagnement des exposants / Promotion des initiatives culturelles / Networking).
+- En bas de page : un bloc Billetterie réutilisant la section hero billetterie (version réduite).
+
+6.2. contact
+- Titre : "Contact".
+- Bloc "Infos pratiques" avec :
+  - Dates (27 & 28 septembre 2025)
+  - Lieu (Paris – adresse à venir)
+  - Email de contact
+  - Téléphone (2 numéros).
+- Formulaire de contact :
+  - Nom, Prénom, Email, Sujet, Message, bouton "Envoyer".
+  - Pas besoin de back-end, juste comportement client (prévention de submit si champs vides).
+- En bas : rappel de la Billetterie (comme sur les autres pages).
+
+6.3. programme
+- Titre : "Programme".
+- Sous-titre : thème de l’édition ("Tonga Mboka 2025 – Le Congo de demain").
+- Organisation par jour :
+  - 27 septembre : liste des tables rondes / focus avec heures, titre, courte description, image à gauche ou droite.
+  - 28 septembre : idem.
+- Layout type timeline (optionnel) ou simple liste avec cartes.
+
+6.4. intervenants
+- Titre : "Intervenants".
+- Grille de cartes (3 ou 4 par ligne) avec :
+  - Photo ronde ou carrée,
+  - Nom,
+  - Fonction / description courte.
+- En cliquant, soit ouvrir une modale, soit une page statique (facultatif).
+
+6.5. partenaires.html
+- Titre : "Partenaires".
+- Logos des partenaires dans une grille.
+- Possibilité de catégorie : institutionnels, médias, entreprises, etc. (même si vide au début).
+
+6.6. participer.html
+- Titre : "Participer".
+- 3 blocs :
+  - "Stands" (infos pour exposants).
+  - "Billetterie" (renvoie à la section billetterie générale).
+  - "Partenariat" (infos pour partenaires, contact via email).
+- Chaque bloc avec bouton ou lien.
+
+6.7. magazine.html
+- Titre : "Magazine".
+- Section principale : liste de cartes de blog (comme la section CNP MAG de la home, mais avec plus d’articles empilés).
+- Sidebar à droite (sur desktop) avec :
+  - Liste "Catégories".
+  - "À la une" (3 titres d’articles).
+  - "Étiquettes" (tags sous forme de petits boutons).
+
+========================
+7. COMPORTEMENT & DÉTAILS TECHNIQUES
+========================
+- Scroll doux (CSS `scroll-behavior: smooth;` ou JS).
+- Menu sticky : le header reste collé en haut quand on scroll.
+- Animation légère au survol des cartes (scale 1.02 + ombre).
+
+Accessibilité :
+- Utiliser des balises sémantiques : <header>, <nav>, <main>, <section>, <footer>.
+- Texte alternatif (`alt`) sur toutes les images.
+- Contraste suffisant entre texte et fond.
+
+========================
+8. CONTENU TEXTE
+========================
+- Utilise les titres principaux à l’identique (ex. "Premier salon socio-culturel congolais en Europe, de retour !", "Réservez votre place !", "Pourquoi nous choisir ?", "Programme 2025", etc.).
+- Pour les paragraphes, tu peux écrire des textes de démonstration en français dans le même esprit (je pourrai les ajuster ensuite).
+
+
