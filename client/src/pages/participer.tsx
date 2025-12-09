@@ -3,21 +3,10 @@ import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { Button } from "@/components/ui/button";
-import { Store, Ticket, Handshake, Lightbulb, ArrowRight } from "lucide-react";
+import { Store, Ticket, Handshake, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const participationOptions = [
-  {
-    icon: Lightbulb,
-    title: "Soumettre un projet",
-    description:
-      "Vous avez un projet innovant lié au Congo ? Présentez votre initiative et bénéficiez d'une visibilité unique auprès d'investisseurs et partenaires.",
-    action: {
-      label: "Soumettre mon projet",
-      href: "/soumettre-projet",
-      type: "link" as const,
-    },
-  },
   {
     icon: Store,
     title: "Stands & Exposants",

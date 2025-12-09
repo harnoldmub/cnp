@@ -1,7 +1,3 @@
-import Header from "@/components/Header";
-import PageHeader from "@/components/PageHeader";
-import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,7 +24,23 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
-import { Loader2, Upload, FileText, Briefcase, MapPin, Euro, Video, Check } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Loader2,
+  Upload,
+  FileText,
+  Briefcase,
+  MapPin,
+  Euro,
+  Video,
+  Check,
+  Sparkles,
+  Rocket,
+  Target,
+  Users,
+} from "lucide-react";
+
+import logoPng from "@assets/LOGOS-CNP_1765307996147.png";
 
 const sectors = [
   "Agriculture & Agroalimentaire",
@@ -79,6 +91,12 @@ const projectFormSchema = z.object({
 
 type ProjectFormValues = z.infer<typeof projectFormSchema>;
 
+const stats = [
+  { icon: Rocket, value: "50+", label: "Projets accompagnés" },
+  { icon: Users, value: "18 500", label: "Visiteurs" },
+  { icon: Target, value: "€2M+", label: "Levés" },
+];
+
 export default function SoumettreProjet() {
   const { toast } = useToast();
   const [, navigate] = useLocation();
@@ -113,7 +131,7 @@ export default function SoumettreProjet() {
     onSuccess: () => {
       toast({
         title: "Projet soumis avec succès",
-        description: "Nous avons bien reçu votre candidature. Nous vous contacterons prochainement.",
+        description: "Nous avons bien reçu votre candidature.",
       });
       navigate("/projet-soumis");
     },
@@ -133,23 +151,84 @@ export default function SoumettreProjet() {
   const descriptionLength = form.watch("description")?.length || 0;
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <PageHeader
-          title="Soumettre un projet"
-          subtitle="Proposez votre projet pour l'édition 2025 de Congo Na Paris"
-        />
+    <div className="min-h-screen bg-[#050816] text-white overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 right-0 w-64 h-64 bg-primary/15 rounded-full blur-3xl" />
+      </div>
 
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="bg-card rounded-lg p-6 md:p-10">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-foreground mb-2">
+      <div className="relative z-10">
+        <header className="py-6 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto flex justify-center">
+            <img
+              src={logoPng}
+              alt="Congo Na Paris"
+              className="h-16 md:h-20"
+              data-testid="img-logo"
+            />
+          </div>
+        </header>
+
+        <section className="py-12 md:py-16 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
+                <Sparkles className="w-4 h-4" />
+                Appel à projets 2025
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Propulsez votre{" "}
+                <span className="text-primary">projet</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                Rejoignez la 7ème édition de Congo Na Paris et présentez votre initiative
+                devant investisseurs, partenaires et une audience de plus de 18 500 visiteurs.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid grid-cols-3 gap-4 md:gap-8 max-w-lg mx-auto mb-12"
+            >
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="text-center p-4 rounded-lg bg-white/5 backdrop-blur-sm"
+                >
+                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <div className="text-2xl md:text-3xl font-bold text-white">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-gray-400">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="pb-16 md:pb-24 px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-white/10">
+              <div className="mb-8 text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
                   Formulaire de candidature
                 </h2>
-                <p className="text-muted-foreground">
-                  Remplissez ce formulaire pour soumettre votre projet. Tous les champs marqués d'un * sont obligatoires.
+                <p className="text-gray-400">
+                  Tous les champs marqués d'un * sont obligatoires
                 </p>
               </div>
 
@@ -161,11 +240,12 @@ export default function SoumettreProjet() {
                       name="fullName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Nom & Prénom *</FormLabel>
+                          <FormLabel className="text-gray-300">Nom & Prénom *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Votre nom complet"
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-fullname"
                             />
                           </FormControl>
@@ -179,12 +259,13 @@ export default function SoumettreProjet() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email *</FormLabel>
+                          <FormLabel className="text-gray-300">Email *</FormLabel>
                           <FormControl>
                             <Input
                               type="email"
                               placeholder="votre@email.com"
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-email"
                             />
                           </FormControl>
@@ -200,12 +281,13 @@ export default function SoumettreProjet() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Numéro de téléphone *</FormLabel>
+                          <FormLabel className="text-gray-300">Téléphone *</FormLabel>
                           <FormControl>
                             <Input
                               type="tel"
                               placeholder="+33 6 12 34 56 78"
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-phone"
                             />
                           </FormControl>
@@ -219,11 +301,12 @@ export default function SoumettreProjet() {
                       name="projectName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Nom du projet *</FormLabel>
+                          <FormLabel className="text-gray-300">Nom du projet *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Titre de votre projet"
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-project-name"
                             />
                           </FormControl>
@@ -238,11 +321,13 @@ export default function SoumettreProjet() {
                     name="description"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Description du projet * (100-2000 caractères)</FormLabel>
+                        <FormLabel className="text-gray-300">
+                          Description du projet * (100-2000 caractères)
+                        </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Décrivez votre projet en détail : objectifs, innovation, impact attendu..."
-                            className="min-h-[180px] resize-y"
+                            placeholder="Décrivez votre projet : objectifs, innovation, impact attendu..."
+                            className="min-h-[180px] resize-y bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                             {...field}
                             data-testid="textarea-description"
                           />
@@ -252,13 +337,13 @@ export default function SoumettreProjet() {
                           <span
                             className={`text-xs ${
                               descriptionLength < 100
-                                ? "text-destructive"
+                                ? "text-red-400"
                                 : descriptionLength > 2000
-                                ? "text-destructive"
-                                : "text-muted-foreground"
+                                ? "text-red-400"
+                                : "text-gray-500"
                             }`}
                           >
-                            {descriptionLength} / 2000 caractères
+                            {descriptionLength} / 2000
                           </span>
                         </div>
                       </FormItem>
@@ -271,7 +356,7 @@ export default function SoumettreProjet() {
                       name="sector"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2">
+                          <FormLabel className="text-gray-300 flex items-center gap-2">
                             <Briefcase className="w-4 h-4" />
                             Secteur d'activité *
                           </FormLabel>
@@ -280,7 +365,10 @@ export default function SoumettreProjet() {
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger data-testid="select-sector">
+                              <SelectTrigger
+                                className="bg-white/10 border-white/20 text-white"
+                                data-testid="select-sector"
+                              >
                                 <SelectValue placeholder="Sélectionnez un secteur" />
                               </SelectTrigger>
                             </FormControl>
@@ -302,7 +390,7 @@ export default function SoumettreProjet() {
                       name="location"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2">
+                          <FormLabel className="text-gray-300 flex items-center gap-2">
                             <MapPin className="w-4 h-4" />
                             Localisation du projet *
                           </FormLabel>
@@ -310,6 +398,7 @@ export default function SoumettreProjet() {
                             <Input
                               placeholder="Ex: Kinshasa, Brazzaville, Paris..."
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-location"
                             />
                           </FormControl>
@@ -325,7 +414,7 @@ export default function SoumettreProjet() {
                       name="budget"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2">
+                          <FormLabel className="text-gray-300 flex items-center gap-2">
                             <Euro className="w-4 h-4" />
                             Budget estimé *
                           </FormLabel>
@@ -334,7 +423,10 @@ export default function SoumettreProjet() {
                             defaultValue={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger data-testid="select-budget">
+                              <SelectTrigger
+                                className="bg-white/10 border-white/20 text-white"
+                                data-testid="select-budget"
+                              >
                                 <SelectValue placeholder="Sélectionnez une fourchette" />
                               </SelectTrigger>
                             </FormControl>
@@ -356,15 +448,16 @@ export default function SoumettreProjet() {
                       name="videoLink"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2">
+                          <FormLabel className="text-gray-300 flex items-center gap-2">
                             <Video className="w-4 h-4" />
-                            Lien vers une vidéo (optionnel)
+                            Lien vidéo (optionnel)
                           </FormLabel>
                           <FormControl>
                             <Input
                               type="url"
                               placeholder="https://youtube.com/..."
                               {...field}
+                              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 focus:border-primary"
                               data-testid="input-video-link"
                             />
                           </FormControl>
@@ -379,20 +472,20 @@ export default function SoumettreProjet() {
                     name="attachmentUrl"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="flex items-center gap-2">
+                        <FormLabel className="text-gray-300 flex items-center gap-2">
                           <FileText className="w-4 h-4" />
                           Document de présentation (optionnel)
                         </FormLabel>
                         <FormControl>
-                          <div className="border border-dashed rounded-md p-6 text-center bg-muted/30">
-                            <Upload className="w-8 h-8 mx-auto text-muted-foreground mb-2" />
-                            <p className="text-sm text-muted-foreground mb-2">
+                          <div className="border border-dashed border-white/20 rounded-lg p-6 text-center bg-white/5">
+                            <Upload className="w-8 h-8 mx-auto text-gray-500 mb-2" />
+                            <p className="text-sm text-gray-400 mb-2">
                               Téléversez votre fichier PDF ou PPT
                             </p>
                             <Input
                               type="url"
-                              placeholder="Ou collez un lien vers votre document (Google Drive, Dropbox...)"
-                              className="max-w-md mx-auto"
+                              placeholder="Ou collez un lien (Google Drive, Dropbox...)"
+                              className="max-w-md mx-auto bg-white/10 border-white/20 text-white placeholder:text-gray-500"
                               {...field}
                               data-testid="input-attachment"
                             />
@@ -407,18 +500,20 @@ export default function SoumettreProjet() {
                     control={form.control}
                     name="dataConsent"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 bg-muted/30">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-lg border border-white/10 p-4 bg-white/5">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
                             onCheckedChange={field.onChange}
+                            className="border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                             data-testid="checkbox-consent"
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm font-normal cursor-pointer">
-                            J'accepte que mes données soient utilisées dans le cadre de l'évaluation
-                            de mon projet et que l'équipe Congo Na Paris me contacte concernant ma candidature. *
+                          <FormLabel className="text-sm font-normal text-gray-300 cursor-pointer">
+                            J'accepte que mes données soient utilisées dans le cadre de
+                            l'évaluation de mon projet et que l'équipe Congo Na Paris me
+                            contacte concernant ma candidature. *
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -426,22 +521,22 @@ export default function SoumettreProjet() {
                     )}
                   />
 
-                  <div className="pt-4">
+                  <div className="pt-4 text-center">
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full md:w-auto rounded-full px-10 uppercase font-semibold"
+                      className="px-12 rounded-full uppercase font-semibold text-lg"
                       disabled={mutation.isPending}
                       data-testid="button-submit-project"
                     >
                       {mutation.isPending ? (
                         <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                           Envoi en cours...
                         </>
                       ) : (
                         <>
-                          <Check className="mr-2 h-4 w-4" />
+                          <Check className="mr-2 h-5 w-5" />
                           Soumettre mon projet
                         </>
                       )}
@@ -450,11 +545,20 @@ export default function SoumettreProjet() {
                 </form>
               </Form>
             </div>
-          </div>
+          </motion.div>
         </section>
-      </main>
-      <Footer />
-      <BackToTop />
+
+        <footer className="py-8 px-4 sm:px-6 border-t border-white/10">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-gray-500 text-sm">
+              Congo Na Paris 2025 - 27 & 28 Septembre - Paris
+            </p>
+            <p className="text-gray-600 text-xs mt-2">
+              Pour toute question : financement@congonaparis.fr
+            </p>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
