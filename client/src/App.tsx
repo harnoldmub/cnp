@@ -11,6 +11,8 @@ import Intervenants from "@/pages/intervenants";
 import Partenaires from "@/pages/partenaires";
 import Participer from "@/pages/participer";
 import Magazine from "@/pages/magazine";
+import SoumettreProjet from "@/pages/soumettre-projet";
+import ProjetSoumis from "@/pages/projet-soumis";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,6 +27,8 @@ function Router() {
       <Route path="/participer" component={Participer} />
       <Route path="/magazine" component={Magazine} />
       <Route path="/magazine/:id" component={Magazine} />
+      <Route path="/soumettre-projet" component={SoumettreProjet} />
+      <Route path="/projet-soumis" component={ProjetSoumis} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -5,9 +5,12 @@ import {
   type InsertContactMessage,
   type NewsletterSubscription,
   type InsertNewsletter,
+  type ProjectSubmission,
+  type InsertProjectSubmission,
   users,
   contactMessages,
-  newsletterSubscriptions
+  newsletterSubscriptions,
+  projectSubmissions
 } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
@@ -18,6 +21,7 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
   createNewsletterSubscription(subscription: InsertNewsletter): Promise<{ subscription: NewsletterSubscription; isNew: boolean }>;
+  createProjectSubmission(submission: InsertProjectSubmission): Promise<ProjectSubmission>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -48,6 +52,11 @@ export class DatabaseStorage implements IStorage {
     }
     const [newsletterSub] = await db.insert(newsletterSubscriptions).values(subscription).returning();
     return { subscription: newsletterSub, isNew: true };
+  }
+
+  async createProjectSubmission(submission: InsertProjectSubmission): Promise<ProjectSubmission> {
+    const [projectSubmission] = await db.insert(projectSubmissions).values(submission).returning();
+    return projectSubmission;
   }
 }
 

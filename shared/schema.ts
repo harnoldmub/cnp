@@ -51,3 +51,34 @@ export const insertNewsletterSchema = createInsertSchema(newsletterSubscriptions
 
 export type InsertNewsletter = z.infer<typeof insertNewsletterSchema>;
 export type NewsletterSubscription = typeof newsletterSubscriptions.$inferSelect;
+
+export const projectSubmissions = pgTable("project_submissions", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  projectName: text("project_name").notNull(),
+  description: text("description").notNull(),
+  sector: text("sector").notNull(),
+  location: text("location").notNull(),
+  budget: text("budget").notNull(),
+  attachmentUrl: text("attachment_url"),
+  videoLink: text("video_link"),
+  dataConsent: text("data_consent").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertProjectSubmissionSchema = createInsertSchema(projectSubmissions).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  email: z.string().email("Adresse email invalide"),
+  phone: z.string().min(8, "Numéro de téléphone requis"),
+  description: z.string().min(100, "Description minimum 100 caractères").max(2000, "Description maximum 2000 caractères"),
+  attachmentUrl: z.string().optional().nullable(),
+  videoLink: z.string().url("URL invalide").optional().or(z.literal("")),
+  dataConsent: z.string().refine(val => val === "true", "Vous devez accepter les conditions"),
+});
+
+export type InsertProjectSubmission = z.infer<typeof insertProjectSubmissionSchema>;
+export type ProjectSubmission = typeof projectSubmissions.$inferSelect;

@@ -3,10 +3,21 @@ import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { Button } from "@/components/ui/button";
-import { Store, Ticket, Handshake, ArrowRight } from "lucide-react";
+import { Store, Ticket, Handshake, Lightbulb, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const participationOptions = [
+  {
+    icon: Lightbulb,
+    title: "Soumettre un projet",
+    description:
+      "Vous avez un projet innovant lié au Congo ? Présentez votre initiative et bénéficiez d'une visibilité unique auprès d'investisseurs et partenaires.",
+    action: {
+      label: "Soumettre mon projet",
+      href: "/soumettre-projet",
+      type: "link" as const,
+    },
+  },
   {
     icon: Store,
     title: "Stands & Exposants",
@@ -54,7 +65,7 @@ export default function Participer() {
 
         <section className="py-16 md:py-24 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {participationOptions.map((option) => (
                 <div
                   key={option.title}
