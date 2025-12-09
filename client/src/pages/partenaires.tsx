@@ -6,7 +6,7 @@ import BackToTop from "@/components/BackToTop";
 import divineConceptionLogo from "@assets/Divine_conception_1765310035303.jpg";
 import leopardsfootLogo from "@assets/leopardsfoot_1765310035305.png";
 import makutanoLogo from "@assets/makutano_1765310035306.png";
-import ministereLogo from "@assets/Ministère_de_l_Europe_et_des_Affaires_étrangères.svg_1765310035307.png";
+import ministereLogo from "@assets/ministere_europe_affaires_etrangeres.png";
 import soEdLogo from "@assets/SO_ED_1765310035307.jpg";
 import topCongoFmLogo from "@assets/Top_Congo_FM_1765310035307.png";
 import bOneLogo from "@assets/B_ONE_LOGO_1765310043574.jpg";
