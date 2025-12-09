@@ -1,41 +1,48 @@
 // Resend email integration for Congo Na Paris
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 let connectionSettings: any;
 
 async function getCredentials() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-  const xReplitToken = process.env.REPL_IDENTITY 
-    ? 'repl ' + process.env.REPL_IDENTITY 
-    : process.env.WEB_REPL_RENEWAL 
-    ? 'depl ' + process.env.WEB_REPL_RENEWAL 
-    : null;
+  const xReplitToken = process.env.REPL_IDENTITY
+    ? "repl " + process.env.REPL_IDENTITY
+    : process.env.WEB_REPL_RENEWAL
+      ? "depl " + process.env.WEB_REPL_RENEWAL
+      : null;
 
   if (!xReplitToken) {
-    throw new Error('X_REPLIT_TOKEN not found for repl/depl');
+    throw new Error("X_REPLIT_TOKEN not found for repl/depl");
   }
 
   connectionSettings = await fetch(
-    'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend',
+    "https://" +
+      hostname +
+      "/api/v2/connection?include_secrets=true&connector_names=resend",
     {
       headers: {
-        'Accept': 'application/json',
-        'X_REPLIT_TOKEN': xReplitToken
-      }
-    }
-  ).then(res => res.json()).then(data => data.items?.[0]);
+        Accept: "application/json",
+        X_REPLIT_TOKEN: xReplitToken,
+      },
+    },
+  )
+    .then((res) => res.json())
+    .then((data) => data.items?.[0]);
 
-  if (!connectionSettings || (!connectionSettings.settings.api_key)) {
-    throw new Error('Resend not connected');
+  if (!connectionSettings || !connectionSettings.settings.api_key) {
+    throw new Error("Resend not connected");
   }
-  return {apiKey: connectionSettings.settings.api_key, fromEmail: connectionSettings.settings.from_email};
+  return {
+    apiKey: connectionSettings.settings.api_key,
+    fromEmail: connectionSettings.settings.from_email,
+  };
 }
 
 async function getUncachableResendClient() {
   const credentials = await getCredentials();
   return {
     client: new Resend(credentials.apiKey),
-    fromEmail: connectionSettings.settings.from_email
+    fromEmail: connectionSettings.settings.from_email,
   };
 }
 
@@ -53,10 +60,10 @@ export async function sendProjectSubmissionNotification(project: {
 }) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
-    
+
     await client.emails.send({
-      from: fromEmail || 'Congo Na Paris <noreply@congonaparis.fr>',
-      to: ['financement@congonaparis.fr'],
+      from: fromEmail || "Congo Na Paris <noreply@congonaparis.fr>",
+      to: ["arnold@mubuanga.com"],
       subject: `Nouveau projet soumis: ${project.projectName}`,
       html: `
         <h2>Nouveau projet soumis sur Congo Na Paris</h2>
@@ -68,28 +75,32 @@ export async function sendProjectSubmissionNotification(project: {
           <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Secteur</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${project.sector}</td></tr>
           <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Localisation</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${project.location}</td></tr>
           <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Budget</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${project.budget}</td></tr>
-          ${project.attachmentUrl ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Document</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><a href="${project.attachmentUrl}">${project.attachmentUrl}</a></td></tr>` : ''}
-          ${project.videoLink ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Vidéo</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><a href="${project.videoLink}">${project.videoLink}</a></td></tr>` : ''}
+          ${project.attachmentUrl ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Document</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><a href="${project.attachmentUrl}">${project.attachmentUrl}</a></td></tr>` : ""}
+          ${project.videoLink ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Vidéo</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><a href="${project.videoLink}">${project.videoLink}</a></td></tr>` : ""}
         </table>
         <h3>Description du projet</h3>
         <p style="white-space: pre-wrap;">${project.description}</p>
       `,
     });
-    
-    console.log('Project submission notification sent successfully');
+
+    console.log("Project submission notification sent successfully");
     return true;
   } catch (error) {
-    console.error('Failed to send project notification email:', error);
+    console.error("Failed to send project notification email:", error);
     return false;
   }
 }
 
-export async function sendProjectConfirmationEmail(email: string, projectName: string, fullName: string) {
+export async function sendProjectConfirmationEmail(
+  email: string,
+  projectName: string,
+  fullName: string,
+) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
-    
+
     await client.emails.send({
-      from: fromEmail || 'Congo Na Paris <noreply@congonaparis.fr>',
+      from: fromEmail || "Congo Na Paris <noreply@congonaparis.fr>",
       to: [email],
       subject: `Confirmation de votre soumission: ${projectName}`,
       html: `
@@ -103,11 +114,11 @@ export async function sendProjectConfirmationEmail(email: string, projectName: s
         </div>
       `,
     });
-    
-    console.log('Project confirmation email sent to:', email);
+
+    console.log("Project confirmation email sent to:", email);
     return true;
   } catch (error) {
-    console.error('Failed to send confirmation email:', error);
+    console.error("Failed to send confirmation email:", error);
     return false;
   }
 }

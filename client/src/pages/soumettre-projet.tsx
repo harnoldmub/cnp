@@ -84,12 +84,10 @@ const projectFormSchema = z.object({
   location: z.string().min(2, "Localisation requise"),
   budget: z.string().min(1, "Budget estimé requis"),
   attachmentUrl: z.string().optional(),
-  videoLink: z
-    .string()
-    .url("URL invalide")
-    .optional()
-    .or(z.literal("")),
-  dataConsent: z.boolean().refine((val) => val === true, "Vous devez accepter les conditions"),
+  videoLink: z.string().url("URL invalide").optional().or(z.literal("")),
+  dataConsent: z
+    .boolean()
+    .refine((val) => val === true, "Vous devez accepter les conditions"),
 });
 
 type ProjectFormValues = z.infer<typeof projectFormSchema>;
@@ -159,11 +157,11 @@ export default function SoumettreProjet() {
         className="absolute inset-0 overflow-hidden pointer-events-none opacity-10"
         style={{
           backgroundImage: `url(${patternImg})`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '400px',
+          backgroundRepeat: "repeat",
+          backgroundSize: "400px",
         }}
       />
-      
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -196,14 +194,14 @@ export default function SoumettreProjet() {
                   Appel à projets 2025
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Propulsez votre{" "}
-                  <span className="text-primary">projet</span>
+                  Propulsez votre <span className="text-primary">projet</span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-300 mb-8">
-                  Rejoignez la 7ème édition de Congo Na Paris et présentez votre initiative
-                  devant investisseurs, partenaires et une audience de plus de 18 500 visiteurs.
+                  Rejoignez la 7ème édition de Congo Na Paris et présentez votre
+                  initiative devant investisseurs, partenaires et une audience
+                  de plus de 18 500 visiteurs.
                 </p>
-                
+
                 <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 mb-8">
                   {stats.map((stat, index) => (
                     <div
@@ -214,19 +212,9 @@ export default function SoumettreProjet() {
                       <div className="text-xl md:text-2xl font-bold text-white">
                         {stat.value}
                       </div>
-                      <div className="text-xs text-gray-400">
-                        {stat.label}
-                      </div>
+                      <div className="text-xs text-gray-400">{stat.label}</div>
                     </div>
                   ))}
-                </div>
-
-                <div className="flex justify-center lg:justify-start">
-                  <img
-                    src={tongaMbokaLogo}
-                    alt="Tonga Mboka - Construire le Pays"
-                    className="h-16 md:h-20 opacity-80"
-                  />
                 </div>
               </motion.div>
 
@@ -237,9 +225,9 @@ export default function SoumettreProjet() {
                 className="hidden lg:flex justify-center"
               >
                 <img
-                  src={lightbulbImg}
-                  alt="Innovation Congo Na Paris"
-                  className="max-h-[500px] object-contain drop-shadow-2xl"
+                  src={tongaMbokaLogo}
+                  alt="Tonga Mboka - Construire le Pays"
+                  className="h-16 md:h-20 opacity-80"
                 />
               </motion.div>
             </div>
@@ -264,14 +252,19 @@ export default function SoumettreProjet() {
               </div>
 
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   <div className="grid md:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
                       name="fullName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-300">Nom & Prénom *</FormLabel>
+                          <FormLabel className="text-gray-300">
+                            Nom & Prénom *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Votre nom complet"
@@ -290,7 +283,9 @@ export default function SoumettreProjet() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-300">Email *</FormLabel>
+                          <FormLabel className="text-gray-300">
+                            Email *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               type="email"
@@ -312,7 +307,9 @@ export default function SoumettreProjet() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-300">Téléphone *</FormLabel>
+                          <FormLabel className="text-gray-300">
+                            Téléphone *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               type="tel"
@@ -332,7 +329,9 @@ export default function SoumettreProjet() {
                       name="projectName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-300">Nom du projet *</FormLabel>
+                          <FormLabel className="text-gray-300">
+                            Nom du projet *
+                          </FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Titre de votre projet"
@@ -370,8 +369,8 @@ export default function SoumettreProjet() {
                               descriptionLength < 100
                                 ? "text-red-400"
                                 : descriptionLength > 2000
-                                ? "text-red-400"
-                                : "text-gray-500"
+                                  ? "text-red-400"
+                                  : "text-gray-500"
                             }`}
                           >
                             {descriptionLength} / 2000
@@ -542,9 +541,10 @@ export default function SoumettreProjet() {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm font-normal text-gray-300 cursor-pointer">
-                            J'accepte que mes données soient utilisées dans le cadre de
-                            l'évaluation de mon projet et que l'équipe Congo Na Paris me
-                            contacte concernant ma candidature. *
+                            J'accepte que mes données soient utilisées dans le
+                            cadre de l'évaluation de mon projet et que l'équipe
+                            Congo Na Paris me contacte concernant ma
+                            candidature. *
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -581,9 +581,7 @@ export default function SoumettreProjet() {
 
         <footer className="py-8 px-4 sm:px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-gray-500 text-sm">
-              Congo Na Paris 2025 - 27 & 28 Septembre - Paris
-            </p>
+            <p className="text-gray-500 text-sm">Congo Na Paris 2025</p>
             <p className="text-gray-600 text-xs mt-2">
               Pour toute question : financement@congonaparis.fr
             </p>
