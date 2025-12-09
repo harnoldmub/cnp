@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactMessageSchema, insertNewsletterSchema, insertProjectSubmissionSchema } from "@shared/schema";
 import { z } from "zod";
+import { sendProjectSubmissionNotification, sendProjectConfirmationEmail } from "./email";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -48,6 +49,10 @@ export async function registerRoutes(
     try {
       const validatedData = insertProjectSubmissionSchema.parse(req.body);
       const submission = await storage.createProjectSubmission(validatedData);
+      
+      sendProjectSubmissionNotification(validatedData).catch(console.error);
+      sendProjectConfirmationEmail(validatedData.email, validatedData.projectName, validatedData.fullName).catch(console.error);
+      
       res.status(201).json({ success: true, id: submission.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
