@@ -3,16 +3,16 @@ import PageHeader from "@/components/PageHeader";
 import SpeakerCard from "@/components/SpeakerCard";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import danieleSassou1 from "@assets/Daniele_Sassou_Nguesso_1765309986120.jpg";
-import danieleSassou2 from "@assets/Danièle_Sassou_Nguesso_1765309986120.jpg";
+import danieleSassou from "@assets/Daniele_Sassou_Nguesso_1765309986120.jpg";
 import malumaMunongo from "@assets/Maluma_Munongo_Claude_1765309986121.jpg";
 import yvesKabongo from "@assets/Yves_kabongo_1765309986121.jpg";
+import eventPhoto from "@assets/Photo-01_1765309862074.png";
 
 const speakers = [
   {
     name: "Danièle Sassou Nguesso",
     role: "Présidente de la Fondation Perspectives d'Avenir",
-    image: danieleSassou2,
+    image: danieleSassou,
   },
   {
     name: "Maluma Munongo Claude",
@@ -23,11 +23,6 @@ const speakers = [
     name: "Yves Kabongo",
     role: "Expert en Développement Économique",
     image: yvesKabongo,
-  },
-  {
-    name: "Danièle Sassou Nguesso",
-    role: "Ambassadrice de la Culture Congolaise",
-    image: danieleSassou1,
   },
 ];
 

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Check, Play } from "lucide-react";
-import conferenceImage from "@assets/stock_images/african_conference_e_984f8971.jpg";
+import conferenceImage from "@assets/Photo-01_1765309862074.png";
 
 const benefits = [
   "Rencontrer les acteurs clés de la diaspora et du Congo",

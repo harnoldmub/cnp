@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import speakerImage from "@assets/stock_images/professional_african_d9482444.jpg";
+import crowdImage from "@assets/Photo-02_1765309862074.png";
 
 export default function BilletterieCTA() {
   return (
@@ -9,7 +9,7 @@ export default function BilletterieCTA() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${speakerImage})` }}
+        style={{ backgroundImage: `url(${crowdImage})` }}
       />
       <div className="absolute inset-0 bg-[#050816]/85" />
 
