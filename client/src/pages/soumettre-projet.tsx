@@ -41,6 +41,9 @@ import {
 } from "lucide-react";
 
 import logoPng from "@assets/LOGOS-CNP_1765307996147.png";
+import lightbulbImg from "@assets/IMG_1357_1765314655387.png";
+import patternImg from "@assets/Graphic-Pattern-03_1765314722206.png";
+import tongaMbokaLogo from "@assets/Logo-PNG-01_1765314722208.png";
 
 const sectors = [
   "Agriculture & Agroalimentaire",
@@ -152,6 +155,15 @@ export default function SoumettreProjet() {
 
   return (
     <div className="min-h-screen bg-[#050816] text-white overflow-hidden">
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `url(${patternImg})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '400px',
+        }}
+      />
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -170,48 +182,67 @@ export default function SoumettreProjet() {
           </div>
         </header>
 
-        <section className="py-12 md:py-16 px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
-                <Sparkles className="w-4 h-4" />
-                Appel à projets 2025
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Propulsez votre{" "}
-                <span className="text-primary">projet</span>
-              </h1>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                Rejoignez la 7ème édition de Congo Na Paris et présentez votre initiative
-                devant investisseurs, partenaires et une audience de plus de 18 500 visiteurs.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid grid-cols-3 gap-4 md:gap-8 max-w-lg mx-auto mb-12"
-            >
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="text-center p-4 rounded-lg bg-white/5 backdrop-blur-sm"
-                >
-                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <div className="text-2xl md:text-3xl font-bold text-white">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs md:text-sm text-gray-400">
-                    {stat.label}
-                  </div>
+        <section className="py-8 md:py-12 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center lg:text-left"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
+                  <Sparkles className="w-4 h-4" />
+                  Appel à projets 2025
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  Propulsez votre{" "}
+                  <span className="text-primary">projet</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-300 mb-8">
+                  Rejoignez la 7ème édition de Congo Na Paris et présentez votre initiative
+                  devant investisseurs, partenaires et une audience de plus de 18 500 visiteurs.
+                </p>
+                
+                <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 mb-8">
+                  {stats.map((stat, index) => (
+                    <div
+                      key={index}
+                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm"
+                    >
+                      <stat.icon className="w-5 h-5 text-primary mx-auto mb-1" />
+                      <div className="text-xl md:text-2xl font-bold text-white">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-gray-400">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </motion.div>
+
+                <div className="flex justify-center lg:justify-start">
+                  <img
+                    src={tongaMbokaLogo}
+                    alt="Tonga Mboka - Construire le Pays"
+                    className="h-16 md:h-20 opacity-80"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="hidden lg:flex justify-center"
+              >
+                <img
+                  src={lightbulbImg}
+                  alt="Innovation Congo Na Paris"
+                  className="max-h-[500px] object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+            </div>
           </div>
         </section>
 
