@@ -2,16 +2,48 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import logoWhite from "@assets/LOGOS-CNP_1765307996147.png";
 import patternBg from "@assets/bggreyFlip_1765307996147.jpg";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const { toast } = useToast();
+
+  const newsletterMutation = useMutation({
+    mutationFn: async (email: string) => {
+      const response = await apiRequest("POST", "/api/newsletter", { email });
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Inscription réussie",
+        description: "Vous êtes maintenant abonné à notre newsletter.",
+      });
+      setEmail("");
+    },
+    onError: () => {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Subscribe triggered:", email);
-    setEmail("");
+    if (!email) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez entrer votre adresse email.",
+        variant: "destructive",
+      });
+      return;
+    }
+    newsletterMutation.mutate(email);
   };
 
   return (
@@ -117,9 +149,10 @@ export default function Footer() {
               <Button
                 type="submit"
                 className="w-full rounded-full uppercase font-semibold"
+                disabled={newsletterMutation.isPending}
                 data-testid="button-newsletter-subscribe"
               >
-                S'abonner
+                {newsletterMutation.isPending ? "Inscription..." : "S'abonner"}
               </Button>
               <p className="text-white/30 text-xs">
                 Laissez ce champ vide si vous êtes humain :

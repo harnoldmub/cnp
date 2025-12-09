@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function ContactForm() {
   const { toast } = useToast();
@@ -13,7 +15,33 @@ export default function ContactForm() {
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const response = await apiRequest("POST", "/api/contact", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message envoyé",
+        description: "Nous vous répondrons dans les plus brefs délais.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -33,24 +61,7 @@ export default function ContactForm() {
       return;
     }
 
-    setIsSubmitting(true);
-    console.log("Form submitted:", formData);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message envoyé",
-      description: "Nous vous répondrons dans les plus brefs délais.",
-    });
-
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+    contactMutation.mutate(formData);
   };
 
   return (
@@ -127,10 +138,10 @@ export default function ContactForm() {
       <Button
         type="submit"
         className="w-full sm:w-auto rounded-full px-8 uppercase font-semibold"
-        disabled={isSubmitting}
+        disabled={contactMutation.isPending}
         data-testid="button-send-message"
       >
-        {isSubmitting ? "Envoi..." : "Envoyer"}
+        {contactMutation.isPending ? "Envoi..." : "Envoyer"}
       </Button>
     </form>
   );
