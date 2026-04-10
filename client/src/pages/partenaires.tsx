@@ -1,107 +1,50 @@
 import Header from "@/components/Header";
+import PageAccessGate from "@/components/PageAccessGate";
 import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-
-import divineConceptionLogo from "@assets/Divine_conception_1765310035303.jpg";
-import leopardsfootLogo from "@assets/leopardsfoot_1765310035305.png";
-import makutanoLogo from "@assets/makutano_1765310035306.png";
-import ministereLogo from "@assets/ministere_europe_affaires_etrangeres.png";
-import soEdLogo from "@assets/SO_ED_1765310035307.jpg";
-import topCongoFmLogo from "@assets/Top_Congo_FM_1765310035307.png";
-import bOneLogo from "@assets/B_ONE_LOGO_1765310043574.jpg";
-import afriqueDigitalLogo from "@assets/Afrique_digital_1765310055773.jpg";
-
-interface Partner {
-  name: string;
-  logo: string;
-}
-
-interface PartnerCategory {
-  title: string;
-  partners: Partner[];
-}
-
-const partnerCategories: PartnerCategory[] = [
-  {
-    title: "Partenaires",
-    partners: [
-      { name: "Divine Conception", logo: divineConceptionLogo },
-      { name: "Leopardsfoot", logo: leopardsfootLogo },
-      { name: "Makutano", logo: makutanoLogo },
-      { name: "Ministère de l'Europe et des Affaires étrangères", logo: ministereLogo },
-      { name: "SO ED", logo: soEdLogo },
-      { name: "Top Congo FM", logo: topCongoFmLogo },
-    ],
-  },
-  {
-    title: "Partenaires Médias",
-    partners: [
-      { name: "B-One TV", logo: bOneLogo },
-    ],
-  },
-  {
-    title: "Sponsors",
-    partners: [
-      { name: "Afrique Digital", logo: afriqueDigitalLogo },
-    ],
-  },
-];
+import { partnerCategories, siteContent } from "@/lib/siteContent";
 
 export default function Partenaires() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
+    <PageAccessGate pageKey="partenaires">
+      <div className="cnp-shell">
+        <Header />
+        <main>
         <PageHeader
           title="Partenaires"
-          subtitle="Ils nous font confiance"
+          subtitle="Les structures qui accompagnent le rayonnement de Congo Na Paris et la mise en relation de la diaspora."
         />
 
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="space-y-16">
-              {partnerCategories.map((category) => (
-                <div key={category.title}>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-                    {category.title}
-                  </h2>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-                    {category.partners.map((partner) => (
-                      <div
-                        key={partner.name}
-                        data-testid={`card-partner-${partner.name.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="bg-card rounded-lg p-6 flex items-center justify-center min-h-[140px] w-full max-w-[280px]"
-                      >
-                        <img
-                          src={partner.logo}
-                          alt={partner.name}
-                          className="max-h-[100px] max-w-full object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
+        <section className="cnp-section">
+          <div className="cnp-container space-y-14">
+            {partnerCategories.map((category) => (
+              <section key={category.title}>
+                <div className="mb-6">
+                  <p className="cnp-eyebrow">{category.title}</p>
                 </div>
-              ))}
-            </div>
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {category.partners.map((partner) => (
+                    <article key={partner.name} className="cnp-card flex min-h-[220px] items-center justify-center p-8">
+                      <img src={partner.logo} alt={partner.name} className="max-h-28 w-full object-contain" />
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
 
-            <div className="mt-16 text-center">
-              <p className="text-muted-foreground mb-6">
-                Intéressé par un partenariat ? Contactez-nous à{" "}
-                <a
-                  href="mailto:partenariat@congonaparis.fr"
-                  className="text-primary hover:underline"
-                  data-testid="link-partnership-email"
-                >
-                  partenariat@congonaparis.fr
-                </a>
-              </p>
+            <div className="cnp-panel p-8 text-center text-foreground/75">
+              Interesses par un partenariat ou une activation de marque ? Ecrivez a{" "}
+              <a className="text-primary" href={`mailto:${siteContent.partnershipEmail}`}>
+                {siteContent.partnershipEmail}
+              </a>
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </PageAccessGate>
   );
 }

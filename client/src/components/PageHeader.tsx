@@ -1,5 +1,3 @@
-import bannerBg from "@assets/bannerBG-2_1765307996147.jpg";
-
 interface PageHeaderProps {
   title: string;
   subtitle?: string;
@@ -7,22 +5,16 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, subtitle }: PageHeaderProps) {
   return (
-    <section
-      className="relative py-20 md:py-28 overflow-hidden"
-      data-testid="page-header"
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bannerBg})` }}
-      />
-      <div className="absolute inset-0 bg-[#050816]/90" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+    <section className="relative overflow-hidden border-b border-white/10 py-20 md:py-24">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(125,43,20,0.78),rgba(12,5,5,0.98))]" />
+      <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
+      <div className="relative cnp-container text-center">
+        <p className="cnp-eyebrow">CNP 8</p>
+        <h1 className="mt-6 font-display text-6xl uppercase leading-none text-white md:text-8xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-lg md:text-xl text-white/70">{subtitle}</p>
+          <p className="mx-auto mt-5 max-w-3xl text-lg text-white/70 md:text-xl">{subtitle}</p>
         )}
       </div>
     </section>

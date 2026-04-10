@@ -1,61 +1,39 @@
 import Header from "@/components/Header";
+import PageAccessGate from "@/components/PageAccessGate";
 import PageHeader from "@/components/PageHeader";
 import SpeakerCard from "@/components/SpeakerCard";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import danieleSassou from "@assets/Daniele_Sassou_Nguesso_1765309986120.jpg";
-import malumaMunongo from "@assets/Maluma_Munongo_Claude_1765309986121.jpg";
-import yvesKabongo from "@assets/Yves_kabongo_1765309986121.jpg";
-import eventPhoto from "@assets/Photo-01_1765309862074.png";
-
-const speakers = [
-  {
-    name: "Danièle Sassou Nguesso",
-    role: "Présidente de la Fondation Perspectives d'Avenir",
-    image: danieleSassou,
-  },
-  {
-    name: "Maluma Munongo Claude",
-    role: "Entrepreneur & Investisseur",
-    image: malumaMunongo,
-  },
-  {
-    name: "Yves Kabongo",
-    role: "Expert en Développement Économique",
-    image: yvesKabongo,
-  },
-];
+import { speakers } from "@/lib/siteContent";
 
 export default function Intervenants() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
+    <PageAccessGate pageKey="intervenants">
+      <div className="cnp-shell">
+        <Header />
+        <main>
         <PageHeader
           title="Intervenants"
-          subtitle="Les acteurs clés de cette 7ème édition - Tonga Mboka"
+          subtitle="Des voix choisies pour leur credibilite, leur capacite a inspirer et leur impact dans les ecosystemes congolais."
         />
 
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                Nos Intervenants de Prestige
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Des personnalités influentes qui partagent leur vision pour le Congo de demain
-              </p>
+        <section className="cnp-section">
+          <div className="cnp-container">
+            <div className="mb-8 cnp-card p-8">
+              <p className="cnp-eyebrow">Voix invitees</p>
+              <h2 className="mt-5 cnp-title text-foreground">Des parcours qui incarnent l'ambition collective</h2>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {speakers.map((speaker, index) => (
-                <SpeakerCard key={`${speaker.name}-${index}`} {...speaker} />
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {speakers.map((speaker) => (
+                <SpeakerCard key={speaker.name} {...speaker} />
               ))}
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </PageAccessGate>
   );
 }

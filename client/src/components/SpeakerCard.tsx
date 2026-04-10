@@ -9,24 +9,21 @@ interface SpeakerCardProps {
 export default function SpeakerCard({ name, role, image }: SpeakerCardProps) {
   const initials = name
     .split(" ")
-    .map((n) => n[0])
+    .map((word) => word[0])
     .join("")
-    .toUpperCase()
-    .slice(0, 2);
+    .slice(0, 2)
+    .toUpperCase();
 
   return (
-    <div
-      className="group text-center p-6 rounded-lg bg-card transition-transform hover:scale-[1.02]"
-      data-testid={`speaker-${name.toLowerCase().replace(/\s/g, "-")}`}
-    >
-      <Avatar className="w-24 h-24 mx-auto mb-4 ring-4 ring-primary/20">
+    <div className="cnp-card p-6 text-center">
+      <Avatar className="mx-auto h-28 w-28 border-4 border-primary/30">
         <AvatarImage src={image} alt={name} className="object-cover" />
-        <AvatarFallback className="text-2xl font-bold bg-primary/10 text-primary">
+        <AvatarFallback className="bg-primary/15 text-2xl font-bold text-primary">
           {initials}
         </AvatarFallback>
       </Avatar>
-      <h3 className="text-lg font-semibold text-foreground">{name}</h3>
-      <p className="text-sm text-muted-foreground mt-1">{role}</p>
+      <h3 className="mt-5 font-display text-4xl uppercase text-foreground">{name}</h3>
+      <p className="mt-2 text-foreground/65">{role}</p>
     </div>
   );
 }

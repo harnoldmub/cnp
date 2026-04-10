@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import PageAccessGate from "@/components/PageAccessGate";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -44,6 +45,7 @@ import logoPng from "@assets/LOGOS-CNP_1765307996147.png";
 import lightbulbImg from "@assets/IMG_1357_1765314655387.png";
 import patternImg from "@assets/Graphic-Pattern-03_1765314722206.png";
 import tongaMbokaLogo from "@assets/Logo-PNG-01_1765314722208.png";
+import { siteContent } from "@/lib/siteContent";
 
 const sectors = [
   "Agriculture & Agroalimentaire",
@@ -96,8 +98,8 @@ type ProjectFormValues = z.infer<typeof projectFormSchema>;
 
 const stats = [
   { icon: Rocket, value: "50+", label: "Projets accompagnés" },
-  { icon: Users, value: "18 500", label: "Visiteurs" },
-  { icon: Target, value: "€2M+", label: "Levés" },
+  { icon: Users, value: "2 jours", label: "d'immersion" },
+  { icon: Target, value: "Paris", label: "hub diaspora" },
 ];
 
 export default function SoumettreProjet() {
@@ -154,7 +156,8 @@ export default function SoumettreProjet() {
   const descriptionLength = form.watch("description")?.length || 0;
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white overflow-hidden">
+    <PageAccessGate pageKey="soumettre-projet">
+    <div className="min-h-screen overflow-hidden bg-[linear-gradient(180deg,#2a120c,#0d0504)] text-white">
       <div
         className="absolute inset-0 overflow-hidden pointer-events-none opacity-10"
         style={{
@@ -193,22 +196,22 @@ export default function SoumettreProjet() {
               >
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
                   <Sparkles className="w-4 h-4" />
-                  Appel à projets 2025
+                  Appel a projets 2026
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                   Propulsez votre{" "}
                   <span className="text-primary">projet</span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-300 mb-8">
-                  Rejoignez la 7ème édition de Congo Na Paris et présentez votre initiative
-                  devant investisseurs, partenaires et une audience de plus de 18 500 visiteurs.
+                  Presentez une initiative capable de creer des opportunites concretes pour la diaspora,
+                  les partenaires et les talents reunis a Paris durant l'edition 8.
                 </p>
                 
                 <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 mb-8">
                   {stats.map((stat, index) => (
                     <div
                       key={index}
-                      className="text-center p-3 rounded-lg bg-white/5 backdrop-blur-sm"
+                    className="text-center rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm"
                     >
                       <stat.icon className="w-5 h-5 text-primary mx-auto mb-1" />
                       <div className="text-xl md:text-2xl font-bold text-white">
@@ -224,7 +227,7 @@ export default function SoumettreProjet() {
                 <div className="flex justify-center lg:justify-start">
                   <img
                     src={tongaMbokaLogo}
-                    alt="Tonga Mboka - Construire le Pays"
+                    alt="Tonga Mboka"
                     className="h-16 md:h-20 opacity-80"
                   />
                 </div>
@@ -253,13 +256,13 @@ export default function SoumettreProjet() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="max-w-3xl mx-auto"
           >
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-white/10">
+            <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-md md:p-10">
               <div className="mb-8 text-center">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
                   Formulaire de candidature
                 </h2>
                 <p className="text-gray-400">
-                  Tous les champs marqués d'un * sont obligatoires
+                  Tous les champs marques d'un * sont obligatoires
                 </p>
               </div>
 
@@ -582,14 +585,15 @@ export default function SoumettreProjet() {
         <footer className="py-8 px-4 sm:px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-gray-500 text-sm">
-              Congo Na Paris 2025 - 27 & 28 Septembre - Paris
+              Congo Na Paris 8e edition - {siteContent.dates} - Paris
             </p>
             <p className="text-gray-600 text-xs mt-2">
-              Pour toute question : financement@congonaparis.fr
+              Pour toute question : {siteContent.projectsEmail}
             </p>
           </div>
         </footer>
       </div>
     </div>
+    </PageAccessGate>
   );
 }

@@ -52,6 +52,23 @@ export const insertNewsletterSchema = createInsertSchema(newsletterSubscriptions
 export type InsertNewsletter = z.infer<typeof insertNewsletterSchema>;
 export type NewsletterSubscription = typeof newsletterSubscriptions.$inferSelect;
 
+export const pageSettings = pgTable("page_settings", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  key: text("key").notNull().unique(),
+  label: text("label").notNull(),
+  href: text("href").notNull(),
+  isEnabled: text("is_enabled").notNull().default("true"),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertPageSettingSchema = createInsertSchema(pageSettings).omit({
+  id: true,
+  updatedAt: true,
+});
+
+export type InsertPageSetting = z.infer<typeof insertPageSettingSchema>;
+export type PageSetting = typeof pageSettings.$inferSelect;
+
 export const projectSubmissions = pgTable("project_submissions", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   fullName: text("full_name").notNull(),
