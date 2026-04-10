@@ -1,97 +1,84 @@
+import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import eventPoster from "@assets/IMG_2265_1765309764526.jpg";
-import tongaMbokaLogo from "@assets/Logo-PNG-01_1765309862074.png";
-import bannerBg from "@assets/bannerBG-2_1765307996147.jpg";
+import { headlinePoints, siteContent } from "@/lib/siteContent";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden" data-testid="hero-section">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bannerBg})` }}
-      />
-      <div className="absolute inset-0 bg-[#050816]/95" />
+    <section className="relative overflow-hidden border-b border-white/10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,187,107,0.25),transparent_32%),linear-gradient(135deg,rgba(87,26,14,0.92),rgba(10,4,4,0.98))]" />
+      <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(270deg,rgba(255,193,122,0.14),transparent)] lg:block" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center py-16 lg:py-0">
-          <div className="text-white space-y-6">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-semibold rounded-full uppercase tracking-wide">
-                7ème Édition
-              </span>
-              <span className="text-white/60 text-sm uppercase tracking-wide">
-                Salon Socio-Économique & Culturel Congolais
-              </span>
-            </div>
-            <img 
-              src={tongaMbokaLogo} 
-              alt="Tonga Mboka - Construire le Pays" 
-              className="h-20 md:h-28 w-auto"
-            />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-              Le Congo
-              <br />
-              de <span className="text-primary">Demain</span>
+      <div className="relative cnp-container py-14 md:py-20 lg:py-28">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="cnp-eyebrow">{siteContent.edition}</span>
+            <h1 className="mt-6 font-display text-6xl uppercase leading-[0.92] text-white md:text-8xl">
+              Le rendez-vous
+              <span className="block text-primary">de la diaspora</span>
+              congolaise
             </h1>
-            <p className="text-lg sm:text-xl text-white/80 max-w-md">
-              1ère plateforme socio-économique & culturelle congolaise en Europe
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
+              Congo Na Paris revient a l'Espace Saint Martin pour une edition plus
+              dense, plus claire et plus ambitieuse: connecter, inspirer et creer des opportunites concretes.
             </p>
-            <div className="flex flex-wrap gap-6 text-sm text-white/70">
-              <div>
-                <span className="text-primary font-semibold">DATE</span>
-                <p className="text-white font-bold text-lg">27-28 Sept. 2025</p>
-              </div>
-              <div>
-                <span className="text-primary font-semibold">HEURE</span>
-                <p className="text-white font-bold text-lg">10H00 - 20H00</p>
-              </div>
-              <div>
-                <span className="text-primary font-semibold">LIEU</span>
-                <p className="text-white font-bold">Espace Charenton</p>
-                <p className="text-white/60 text-xs">327 rue de Charenton, 75012 Paris</p>
-              </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {headlinePoints.map((point) => (
+                <div key={point} className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
+                  <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                  <span>{point}</span>
+                </div>
+              ))}
             </div>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Button
-                size="lg"
-                className="rounded-full px-8 text-base uppercase font-semibold"
-                data-testid="button-billetterie"
-              >
-                Billetterie
-              </Button>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/participer">
+                <Button size="lg" className="rounded-full px-8 text-base uppercase">
+                  Prendre sa place
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
               <Link href="/programme">
                 <Button
-                  size="lg"
                   variant="outline"
-                  className="rounded-full px-8 text-base uppercase font-semibold border-white/30 text-white bg-white/10 backdrop-blur-sm"
-                  data-testid="button-programme"
+                  size="lg"
+                  className="rounded-full border-white/20 bg-white/5 px-8 text-base uppercase text-white"
                 >
-                  Programme
+                  Voir le programme
                 </Button>
               </Link>
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative">
+            <div className="absolute -inset-6 rounded-[40px] bg-primary/20 blur-3xl" />
+            <div className="relative cnp-card-dark overflow-hidden p-4">
               <img
-                src={eventPoster}
-                alt="Congo Na Paris 2025 - Tonga Mboka"
-                className="w-full h-auto object-cover"
+                src="/hero.png"
+                alt="Affiche Congo Na Paris 8e edition"
+                className="w-full rounded-[24px] object-cover shadow-2xl"
               />
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <div className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
+                  <CalendarDays className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-primary">Dates</p>
+                    <p className="font-semibold text-white">{siteContent.dates}</p>
+                  </div>
+                </div>
+                <div className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-primary">Lieu</p>
+                    <p className="font-semibold text-white">{siteContent.venue}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 bg-repeat-x opacity-30"
-        style={{
-          backgroundImage: `url(${bannerBg})`,
-          backgroundSize: "auto 100%",
-        }}
-      />
     </section>
   );
 }

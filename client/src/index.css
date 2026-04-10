@@ -1,55 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE - Congo Na Paris Brand */
+/* CNP 8 theme */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
-  --background: 0 0% 100%;
-  --foreground: 228 50% 4%;
-  --border: 0 0% 90%;
-  --card: 0 0% 97%;
-  --card-foreground: 228 50% 4%;
-  --card-border: 0 0% 92%;
-  --sidebar: 228 50% 4%;
+  --elevate-1: rgba(255,255,255, .03);
+  --elevate-2: rgba(255,255,255, .08);
+  --background: 32 43% 98%;
+  --foreground: 18 37% 14%;
+  --border: 28 25% 86%;
+  --card: 0 0% 100%;
+  --card-foreground: 18 37% 14%;
+  --card-border: 30 22% 88%;
+  --sidebar: 14 35% 8%;
   --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 228 40% 10%;
-  --sidebar-primary: 0 100% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 228 40% 8%;
-  --sidebar-accent-foreground: 0 0% 95%;
-  --sidebar-ring: 0 100% 60%;
+  --sidebar-border: 20 32% 20%;
+  --sidebar-primary: 35 76% 59%;
+  --sidebar-primary-foreground: 15 44% 7%;
+  --sidebar-accent: 10 54% 16%;
+  --sidebar-accent-foreground: 35 68% 94%;
+  --sidebar-ring: 35 76% 59%;
   --popover: 0 0% 100%;
-  --popover-foreground: 228 50% 4%;
-  --popover-border: 0 0% 90%;
-  --primary: 0 100% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 228 50% 4%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 228 10% 40%;
-  --accent: 228 50% 4%;
-  --accent-foreground: 0 0% 100%;
+  --popover-foreground: 18 37% 14%;
+  --popover-border: 30 22% 88%;
+  --primary: 35 76% 59%;
+  --primary-foreground: 15 44% 7%;
+  --secondary: 32 41% 95%;
+  --secondary-foreground: 18 37% 14%;
+  --muted: 30 35% 95%;
+  --muted-foreground: 20 16% 42%;
+  --accent: 25 52% 17%;
+  --accent-foreground: 35 68% 94%;
   --destructive: 0 84% 48%;
   --destructive-foreground: 0 0% 100%;
-  --input: 228 15% 40%;
-  --ring: 0 100% 60%;
-  --chart-1: 0 100% 60%;
-  --chart-2: 228 80% 35%;
-  --chart-3: 280 60% 35%;
-  --chart-4: 30 80% 40%;
-  --chart-5: 160 60% 35%;
-  --font-sans: Poppins, Inter, Open Sans, sans-serif;
-  --font-serif: Georgia, serif;
+  --input: 20 20% 50%;
+  --ring: 35 76% 59%;
+  --chart-1: 35 76% 59%;
+  --chart-2: 10 64% 41%;
+  --chart-3: 32 43% 72%;
+  --chart-4: 6 72% 59%;
+  --chart-5: 44 55% 48%;
+  --font-sans: Manrope, sans-serif;
+  --font-serif: "Bebas Neue", sans-serif;
   --font-mono: Menlo, monospace;
-  --radius: .5rem;
-  --cnp-navy: 228 50% 4%;
-  --cnp-red: 0 100% 60%;
-  --cnp-violet: 280 35% 25%;
+  --radius: 1rem;
+  --cnp-night: 15 44% 7%;
+  --cnp-bronze: 35 76% 59%;
+  --cnp-copper: 10 64% 41%;
+  --cnp-cream: 35 68% 94%;
   --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.02);
   --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.03);
   --shadow-sm: 0px 2px 0px 0px hsl(0 0% 0% / 0.04), 0px 1px 2px -1px hsl(0 0% 0% / 0.06);
@@ -91,56 +94,7 @@
 }
 
 .dark {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
-  --opaque-button-border-intensity: 9;
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
-  --background: 228 50% 4%;
-  --foreground: 0 0% 98%;
-  --border: 228 30% 12%;
-  --card: 228 40% 6%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 228 30% 10%;
-  --sidebar: 228 50% 4%;
-  --sidebar-foreground: 0 0% 95%;
-  --sidebar-border: 228 30% 12%;
-  --sidebar-primary: 0 100% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 228 40% 10%;
-  --sidebar-accent-foreground: 0 0% 95%;
-  --sidebar-ring: 0 100% 60%;
-  --popover: 228 40% 8%;
-  --popover-foreground: 0 0% 96%;
-  --popover-border: 228 30% 14%;
-  --primary: 0 100% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 228 30% 12%;
-  --secondary-foreground: 0 0% 96%;
-  --muted: 228 25% 14%;
-  --muted-foreground: 228 8% 70%;
-  --accent: 228 40% 10%;
-  --accent-foreground: 0 0% 96%;
-  --destructive: 0 84% 45%;
-  --destructive-foreground: 0 0% 100%;
-  --input: 0 0% 70%;
-  --ring: 0 100% 60%;
-  --chart-1: 0 100% 65%;
-  --chart-2: 228 90% 70%;
-  --chart-3: 280 70% 70%;
-  --chart-4: 30 90% 65%;
-  --chart-5: 160 70% 65%;
-  --cnp-navy: 228 50% 4%;
-  --cnp-red: 0 100% 60%;
-  --cnp-violet: 280 35% 35%;
-  --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 100% / 0.02);
-  --shadow-xs: 0px 2px 0px 0px hsl(0 0% 100% / 0.03);
-  --shadow-sm: 0px 2px 0px 0px hsl(0 0% 100% / 0.04), 0px 1px 2px -1px hsl(0 0% 100% / 0.06);
-  --shadow: 0px 2px 0px 0px hsl(0 0% 100% / 0.05), 0px 1px 2px -1px hsl(0 0% 100% / 0.08);
-  --shadow-md: 0px 2px 0px 0px hsl(0 0% 100% / 0.06), 0px 2px 4px -1px hsl(0 0% 100% / 0.10);
-  --shadow-lg: 0px 2px 0px 0px hsl(0 0% 100% / 0.08), 0px 4px 6px -1px hsl(0 0% 100% / 0.12);
-  --shadow-xl: 0px 2px 0px 0px hsl(0 0% 100% / 0.10), 0px 8px 10px -1px hsl(0 0% 100% / 0.15);
-  --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 100% / 0.12);
+  color-scheme: dark;
 
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
@@ -178,6 +132,68 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top, hsl(var(--cnp-bronze) / 0.12), transparent 22%),
+      linear-gradient(180deg, hsl(34 56% 98%), hsl(32 35% 96%));
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .cnp-shell {
+    @apply min-h-screen bg-background text-foreground;
+  }
+
+  .cnp-section {
+    @apply relative py-16 md:py-24;
+  }
+
+  .cnp-section-alt {
+    @apply bg-[#f7efe9];
+  }
+
+  .cnp-section-theme {
+    @apply bg-[linear-gradient(180deg,#2b130d,#140907)] text-white;
+  }
+
+  .cnp-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6;
+  }
+
+  .cnp-card {
+    @apply rounded-[28px] border border-[#ead9cc] bg-white shadow-[0_18px_45px_rgba(75,42,22,0.08)];
+  }
+
+  .cnp-panel {
+    @apply rounded-[22px] border border-[#e6cfbe] bg-[#fcf7f3];
+  }
+
+  .cnp-card-dark {
+    @apply rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] shadow-[0_22px_50px_rgba(0,0,0,0.25)];
+  }
+
+  .cnp-panel-dark {
+    @apply rounded-[22px] border border-white/10 bg-white/[0.05];
+  }
+
+  .cnp-eyebrow {
+    @apply inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary;
+  }
+
+  .cnp-title {
+    @apply font-display text-4xl uppercase leading-none md:text-6xl;
+  }
+
+  .cnp-subtitle {
+    @apply text-base leading-7 text-muted-foreground md:text-lg;
   }
 }
 

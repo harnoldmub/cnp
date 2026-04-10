@@ -1,246 +1,105 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoDark from "@assets/LOGOS-CNP1_(1)_1765307996148.png";
-import logoWhite from "@assets/LOGOS-CNP_1765307996147.png";
-
-interface NavItem {
-  label: string;
-  href?: string;
-  children?: { label: string; href: string }[];
-  external?: boolean;
-}
-
-const navItems: NavItem[] = [
-  { label: "Accueil", href: "/" },
-  {
-    label: "A propos",
-    children: [
-      { label: "Présentation", href: "/presentation" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    label: "Edition 2025",
-    children: [
-      { label: "Programme", href: "/programme" },
-      { label: "Intervenants", href: "/intervenants" },
-      { label: "Partenaires", href: "/partenaires" },
-    ],
-  },
-  { label: "Participer", href: "/participer" },
-  { label: "CNP Mag", href: "/magazine" },
-  { label: "CNP TV", href: "https://youtube.com", external: true },
-];
+import { useVisiblePages } from "@/lib/pageSettings";
 
 interface HeaderProps {
   variant?: "light" | "dark";
 }
 
-export default function Header({ variant = "light" }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+export default function Header({ variant: _variant }: HeaderProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-
-  const isActive = (href?: string) => href === location;
-
-  const handleDropdown = (label: string) => {
-    setOpenDropdown(openDropdown === label ? null : label);
-  };
-
-  const isDark = variant === "dark";
+  const { navigationPages } = useVisiblePages();
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full border-b ${
-        isDark
-          ? "bg-[#050816] border-white/10"
-          : "bg-white border-border"
-      }`}
-      data-testid="header"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" data-testid="link-home">
-            <img
-              src={isDark ? logoWhite : logoDark}
-              alt="Congo Na Paris"
-              className="h-10 md:h-12 w-auto"
-            />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#140907]/95 backdrop-blur-xl">
+      <div className="cnp-container py-2.5">
+        <div className="flex items-center justify-between gap-4 lg:hidden">
+          <Link href="/" className="flex items-center gap-3">
+            <img src="/logo-white.png" alt="Congo Na Paris" className="h-11 w-auto" />
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white"
+            onClick={() => setIsOpen((value) => !value)}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
+
+        <div className="hidden items-center gap-5 lg:grid lg:grid-cols-[auto_1fr_auto]">
+          <Link href="/" className="flex items-center gap-3">
+            <img src="/logo-white.png" alt="Congo Na Paris" className="h-12 w-auto" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1" data-testid="nav-desktop">
-            {navItems.map((item) => (
-              <div key={item.label} className="relative">
-                {item.children ? (
-                  <div className="relative">
-                    <button
-                      onClick={() => handleDropdown(item.label)}
-                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
-                        isDark
-                          ? "text-white/90 hover:text-white"
-                          : "text-foreground/80 hover:text-foreground"
-                      }`}
-                      data-testid={`nav-${item.label.toLowerCase().replace(/\s/g, "-")}`}
-                    >
-                      {item.label}
-                      <ChevronDown className="h-4 w-4" />
-                    </button>
-                    {openDropdown === item.label && (
-                      <div
-                        className={`absolute top-full left-0 mt-1 min-w-[160px] rounded-md shadow-lg py-1 ${
-                          isDark ? "bg-[#0a0d1a]" : "bg-white"
-                        }`}
-                      >
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpenDropdown(null)}
-                            className={`block px-4 py-2 text-sm hover-elevate ${
-                              isDark
-                                ? "text-white/80 hover:text-white"
-                                : "text-foreground/80 hover:text-foreground"
-                            }`}
-                            data-testid={`nav-${child.label.toLowerCase().replace(/\s/g, "-")}`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`px-3 py-2 text-sm font-medium transition-colors ${
-                      isDark
-                        ? "text-white/90 hover:text-white"
-                        : "text-foreground/80 hover:text-foreground"
-                    }`}
-                    data-testid={`nav-${item.label.toLowerCase().replace(/\s/g, "-")}`}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href!}
-                    className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-                      isActive(item.href)
-                        ? isDark
-                          ? "text-white"
-                          : "text-foreground"
-                        : isDark
-                        ? "text-white/90 hover:text-white"
-                        : "text-foreground/80 hover:text-foreground"
-                    }`}
-                    data-testid={`nav-${item.label.toLowerCase().replace(/\s/g, "-")}`}
-                  >
-                    {item.label}
-                    {isActive(item.href) && (
-                      <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />
-                    )}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
+          <div className="flex items-center justify-center gap-3">
+            <nav className="flex items-center justify-center gap-1.5">
+            {navigationPages.map((item) => {
+              const active = location === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-full px-3.5 py-2 text-sm font-semibold transition ${
+                    active
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "text-white hover:bg-white/5 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            </nav>
+          </div>
 
-          <div className="flex items-center gap-2">
-            <Button
-              size="icon"
-              variant="ghost"
-              className={isDark ? "text-white/80 hover:text-white" : ""}
-              data-testid="button-search"
+          <div className="flex items-center gap-2.5">
+            <a
+              href="https://my.weezevent.com/congo-na-paris-construire-la-paix"
+              target="_blank"
+              rel="noreferrer"
             >
-              <Search className="h-5 w-5" />
-            </Button>
-            <Button
-              size="icon"
-              variant="ghost"
-              className={`lg:hidden ${isDark ? "text-white/80 hover:text-white" : ""}`}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              data-testid="button-mobile-menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+              <Button className="rounded-full px-5 py-2.5 font-semibold uppercase">
+                Reserver
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div
-          className={`lg:hidden border-t ${
-            isDark ? "bg-[#050816] border-white/10" : "bg-white border-border"
-          }`}
-          data-testid="nav-mobile"
-        >
-          <div className="px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                {item.children ? (
-                  <div>
-                    <button
-                      onClick={() => handleDropdown(item.label)}
-                      className={`flex items-center justify-between w-full px-3 py-2 text-base font-medium ${
-                        isDark ? "text-white/90" : "text-foreground/80"
-                      }`}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          openDropdown === item.label ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {openDropdown === item.label && (
-                      <div className="pl-4 space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`block px-3 py-2 text-sm ${
-                              isDark ? "text-white/70" : "text-foreground/70"
-                            }`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`block px-3 py-2 text-base font-medium ${
-                      isDark ? "text-white/90" : "text-foreground/80"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href!}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-3 py-2 text-base font-medium ${
-                      isActive(item.href)
-                        ? "text-primary"
-                        : isDark
-                        ? "text-white/90"
-                        : "text-foreground/80"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
+      {isOpen && (
+        <div className="border-t border-white/10 bg-[#120806] lg:hidden">
+          <div className="cnp-container space-y-3 py-5">
+            {navigationPages.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block rounded-2xl px-4 py-3 text-base font-semibold ${
+                  location === item.href
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-white/5 text-white/80"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
             ))}
+
+            <a
+              href="https://my.weezevent.com/congo-na-paris-construire-la-paix"
+              target="_blank"
+              rel="noreferrer"
+              className="block"
+            >
+              <Button className="w-full rounded-full uppercase">
+                Reserver
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </div>
       )}

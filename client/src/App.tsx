@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/home";
 import Presentation from "@/pages/presentation";
 import Contact from "@/pages/contact";
@@ -11,6 +12,7 @@ import Intervenants from "@/pages/intervenants";
 import Partenaires from "@/pages/partenaires";
 import Participer from "@/pages/participer";
 import Magazine from "@/pages/magazine";
+import AdminPage from "@/pages/admin";
 import SoumettreProjet from "@/pages/soumettre-projet";
 import ProjetSoumis from "@/pages/projet-soumis";
 import NotFound from "@/pages/not-found";
@@ -27,6 +29,7 @@ function Router() {
       <Route path="/participer" component={Participer} />
       <Route path="/magazine" component={Magazine} />
       <Route path="/magazine/:id" component={Magazine} />
+      <Route path="/admin" component={AdminPage} />
       <Route path="/soumettre-projet" component={SoumettreProjet} />
       <Route path="/projet-soumis" component={ProjetSoumis} />
       <Route component={NotFound} />
@@ -38,6 +41,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ScrollToTop />
         <Toaster />
         <Router />
       </TooltipProvider>

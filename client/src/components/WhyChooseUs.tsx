@@ -1,73 +1,61 @@
-import { Button } from "@/components/ui/button";
+import { Check, Sparkles } from "lucide-react";
 import { Link } from "wouter";
-import { Check, Play } from "lucide-react";
-import conferenceImage from "@assets/Photo-01_1765309862074.png";
-
-const benefits = [
-  "Rencontrer les acteurs clés de la diaspora et du Congo",
-  "Découvrir les opportunités économiques et culturelles",
-  "Participer à des conférences et des ateliers inspirants",
-  "S'immerger dans une ambiance festive et constructive",
-];
+import { Button } from "@/components/ui/button";
+import audienceImage from "@assets/Photo-01_1765309862074.png";
+import { audiences, siteContent, whyAttend } from "@/lib/siteContent";
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 md:py-28 bg-background" data-testid="why-choose-us">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-6">
-            <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider">
-              [CNP 7ème ÉDITION]
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-              Pourquoi nous choisir ?
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Congo Na Paris est le premier salon socio-culturel congolais en Europe,
-              créant un pont unique entre la diaspora congolaise et les deux Congo.
-              Notre événement rassemble entrepreneurs, artistes, intellectuels et
-              passionnés pour célébrer et construire l'avenir ensemble.
-            </p>
-            <ul className="space-y-4">
-              {benefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                    <Check className="w-4 h-4 text-primary" />
-                  </span>
-                  <span className="text-foreground">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href="/presentation">
-              <Button
-                size="lg"
-                className="rounded-full px-8 uppercase font-semibold mt-4"
-                data-testid="button-en-savoir-plus"
-              >
-                En savoir plus
-              </Button>
-            </Link>
+    <section className="cnp-section">
+      <div className="cnp-container grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative">
+          <div className="absolute -inset-5 rounded-[32px] bg-primary/10 blur-3xl" />
+          <img
+            src={audienceImage}
+            alt="Public Congo Na Paris"
+            className="relative w-full rounded-[30px] border border-[#ead9cc] object-cover shadow-2xl"
+          />
+        </div>
+
+        <div>
+          <p className="cnp-eyebrow">Description</p>
+          <h2 className="mt-5 cnp-title text-foreground">
+            Depuis 2015, CNP rassemble les diasporas des deux Congo
+          </h2>
+          <p className="mt-5 cnp-subtitle max-w-2xl">
+            {siteContent.venue} accueille une journee immersive pensee pour aller a l'essentiel:
+            connecter, inspirer et faire emerger des opportunites concreres pour la diaspora.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {whyAttend.map((item) => (
+              <div key={item} className="cnp-panel flex gap-3 px-4 py-4">
+                <Check className="mt-0.5 h-5 w-5 text-primary" />
+                <p className="text-foreground/80">{item}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="relative">
-            <div className="relative rounded-lg overflow-hidden shadow-xl">
-              <img
-                src={conferenceImage}
-                alt="Conférence Congo Na Paris"
-                className="w-full aspect-video object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30" />
-              <button
-                className="absolute inset-0 flex items-center justify-center group"
-                onClick={() => console.log("Play video triggered")}
-                data-testid="button-play-video"
-              >
-                <span className="w-20 h-20 rounded-full bg-primary flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg">
-                  <Play className="w-8 h-8 text-white fill-white ml-1" />
+          <div className="mt-8 cnp-card p-6">
+            <div className="flex items-center gap-3 text-primary">
+              <Sparkles className="h-5 w-5" />
+              <p className="font-semibold uppercase tracking-[0.18em]">Pour qui ?</p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {audiences.map((audience) => (
+                <span
+                  key={audience}
+                  className="rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-sm text-foreground/75"
+                >
+                  {audience}
                 </span>
-              </button>
+              ))}
             </div>
           </div>
+
+          <Link href="/presentation">
+            <Button className="mt-8 rounded-full px-8 uppercase">Decouvrir l'edition</Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,83 +1,70 @@
 import Header from "@/components/Header";
+import PageAccessGate from "@/components/PageAccessGate";
 import PageHeader from "@/components/PageHeader";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { MapPin, Calendar, Mail, Phone } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: Calendar,
-    label: "Dates",
-    value: "27 & 28 Septembre 2025",
-  },
-  {
-    icon: MapPin,
-    label: "Lieu",
-    value: "Paris - Adresse à venir",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "contact@congonaparis.fr",
-  },
-  {
-    icon: Phone,
-    label: "Téléphone",
-    value: "+33 1 23 45 67 89",
-  },
-];
+import { Mail, MapPin, CalendarDays } from "lucide-react";
+import { siteContent } from "@/lib/siteContent";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <PageHeader title="Contact" subtitle="Nous sommes à votre écoute" />
+    <PageAccessGate pageKey="contact">
+      <div className="cnp-shell">
+        <Header />
+        <main>
+        <PageHeader
+          title="Contact"
+          subtitle="Une question, une demande de partenariat ou un besoin logistique ? L'equipe CNP est a votre ecoute."
+        />
 
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                  Infos Pratiques
-                </h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info) => (
-                    <div
-                      key={info.label}
-                      className="flex items-start gap-4 p-5 bg-card rounded-lg"
-                    >
-                      <span className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                        <info.icon className="w-6 h-6 text-primary" />
-                      </span>
-                      <div>
-                        <p className="text-sm text-muted-foreground">
-                          {info.label}
-                        </p>
-                        <p className="text-lg font-medium text-foreground">
-                          {info.value}
-                        </p>
-                      </div>
+        <section className="cnp-section">
+          <div className="cnp-container grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="space-y-6">
+              <div className="cnp-card p-8">
+                <p className="cnp-eyebrow">Infos pratiques</p>
+                <div className="mt-6 space-y-5 text-foreground/80">
+                  <div className="flex items-start gap-3">
+                    <CalendarDays className="mt-1 h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-semibold text-foreground">{siteContent.dates}</p>
+                      <p>{siteContent.hours}</p>
                     </div>
-                  ))}
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-1 h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-semibold text-foreground">{siteContent.venue}</p>
+                      <p>{siteContent.address.join(", ")}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-1 h-5 w-5 text-primary" />
+                    <div>
+                      <p className="font-semibold text-foreground">{siteContent.email}</p>
+                      <p>{siteContent.partnershipEmail}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                  Envoyez-nous un message
-                </h2>
-                <div className="bg-card rounded-lg p-6 md:p-8">
-                  <ContactForm />
-                </div>
+            <div className="cnp-card p-8">
+              <p className="cnp-eyebrow">Nous ecrire</p>
+              <h2 className="mt-5 font-display text-5xl uppercase text-foreground">Parlons de votre besoin</h2>
+              <p className="mt-4 text-foreground/65">
+                Remplissez le formulaire et nous reviendrons vers vous rapidement.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
               </div>
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </PageAccessGate>
   );
 }
