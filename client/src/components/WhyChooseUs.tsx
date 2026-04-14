@@ -2,7 +2,7 @@ import { Check, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import audienceImage from "@assets/Photo-01_1765309862074.png";
-import { audiences, siteContent, whyAttend } from "@/lib/siteContent";
+import { audiences, movementParagraphs, siteContent, whyAttend } from "@/lib/siteContent";
 
 export default function WhyChooseUs() {
   return (
@@ -18,14 +18,15 @@ export default function WhyChooseUs() {
         </div>
 
         <div>
-          <p className="cnp-eyebrow">Description</p>
+          <p className="cnp-eyebrow">Mouvement</p>
           <h2 className="mt-5 cnp-title text-foreground">
-            Depuis 2015, CNP rassemble les diasporas des deux Congo
+            {siteContent.movementTitle}
           </h2>
-          <p className="mt-5 cnp-subtitle max-w-2xl">
-            {siteContent.venue} accueille une journee immersive pensee pour aller a l'essentiel:
-            connecter, inspirer et faire emerger des opportunites concreres pour la diaspora.
-          </p>
+          <div className="mt-5 max-w-2xl space-y-4 text-lg leading-8 text-foreground/74">
+            {movementParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {whyAttend.map((item) => (
@@ -54,7 +55,7 @@ export default function WhyChooseUs() {
           </div>
 
           <Link href="/presentation">
-            <Button className="mt-8 rounded-full px-8 uppercase">Decouvrir l'edition</Button>
+            <Button className="mt-8 rounded-full px-8 uppercase">Comprendre la vision 2026</Button>
           </Link>
         </div>
       </div>

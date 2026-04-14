@@ -34,8 +34,9 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-1 h-5 w-5 text-primary" />
                     <div>
-                      <p className="font-semibold text-foreground">{siteContent.venue}</p>
-                      <p>{siteContent.address.join(", ")}</p>
+                      <p className="font-semibold text-foreground">{siteContent.venueSummary}</p>
+                      <p>{siteContent.venueDetails[0]}</p>
+                      <p>{siteContent.venueDetails[1]}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

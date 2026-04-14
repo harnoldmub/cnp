@@ -74,7 +74,7 @@ export default function ProjetSoumis() {
           </main>
 
           <footer className="border-t border-white/10 py-8 text-center text-sm text-white/45">
-            Congo Na Paris 8e edition • {siteContent.dates} • {siteContent.venue}, Paris
+            Congo Na Paris 8e edition • {siteContent.dates} • {siteContent.venueSummary}
           </footer>
         </div>
       </div>

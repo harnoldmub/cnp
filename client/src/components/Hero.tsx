@@ -1,81 +1,38 @@
-import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
-import { headlinePoints, siteContent } from "@/lib/siteContent";
+import { useState } from "react";
+import { siteContent } from "@/lib/siteContent";
 
 export default function Hero() {
-  return (
-    <section className="relative overflow-hidden border-b border-white/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,187,107,0.25),transparent_32%),linear-gradient(135deg,rgba(87,26,14,0.92),rgba(10,4,4,0.98))]" />
-      <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(270deg,rgba(255,193,122,0.14),transparent)] lg:block" />
+  const [videoReady, setVideoReady] = useState(false);
 
-      <div className="relative cnp-container py-14 md:py-20 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+  return (
+    <section className="relative min-h-[78vh] overflow-hidden border-b border-white/10 lg:min-h-[88vh]">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#3f1c12,#150705)]" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-[120vh] w-[220vw] -translate-x-1/2 -translate-y-1/2 lg:h-[140vh] lg:w-[140vw]">
+          <iframe
+            className={`h-full w-full transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+            src="https://www.youtube.com/embed/IkX5dpqm_dc?autoplay=1&mute=1&controls=0&loop=1&playlist=IkX5dpqm_dc&playsinline=1&modestbranding=1&rel=0"
+            title="Congo Na Paris video background"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            onLoad={() => setVideoReady(true)}
+          />
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,6,5,0.76)_0%,rgba(13,6,5,0.58)_38%,rgba(13,6,5,0.48)_64%,rgba(13,6,5,0.72)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(236,178,83,0.14),transparent_28%)]" />
+
+      <div className="relative cnp-container flex min-h-[78vh] items-center py-14 md:py-20 lg:min-h-[88vh] lg:py-24">
+        <div className="max-w-5xl">
           <div>
             <span className="cnp-eyebrow">{siteContent.edition}</span>
-            <h1 className="mt-6 font-display text-6xl uppercase leading-[0.92] text-white md:text-8xl">
+            <h1 className="mt-6 max-w-6xl font-display text-6xl uppercase leading-[0.92] text-white md:text-8xl xl:text-[8.5rem]">
               Le rendez-vous
-              <span className="block text-primary">de la diaspora</span>
-              congolaise
+              <span className="block">de la <span className="text-primary">diaspora congolaise</span></span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75 md:text-xl">
-              Congo Na Paris revient a l'Espace Saint Martin pour une edition plus
-              dense, plus claire et plus ambitieuse: connecter, inspirer et creer des opportunites concretes.
+            <p className="mt-8 text-sm uppercase tracking-[0.28em] text-white/58 md:text-base">
+              {siteContent.dates} &nbsp; • &nbsp; {siteContent.venueSummary}
             </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {headlinePoints.map((point) => (
-                <div key={point} className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary" />
-                  <span>{point}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/participer">
-                <Button size="lg" className="rounded-full px-8 text-base uppercase">
-                  Prendre sa place
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/programme">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full border-white/20 bg-white/5 px-8 text-base uppercase text-white"
-                >
-                  Voir le programme
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-[40px] bg-primary/20 blur-3xl" />
-            <div className="relative cnp-card-dark overflow-hidden p-4">
-              <img
-                src="/hero.png"
-                alt="Affiche Congo Na Paris 8e edition"
-                className="w-full rounded-[24px] object-cover shadow-2xl"
-              />
-              <div className="mt-4 grid gap-3 md:grid-cols-2">
-                <div className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
-                  <CalendarDays className="h-5 w-5 text-primary" />
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-primary">Dates</p>
-                    <p className="font-semibold text-white">{siteContent.dates}</p>
-                  </div>
-                </div>
-                <div className="cnp-panel-dark flex items-center gap-3 px-4 py-4 text-white/80">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-primary">Lieu</p>
-                    <p className="font-semibold text-white">{siteContent.venue}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

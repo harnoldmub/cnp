@@ -1,65 +1,75 @@
 import Header from "@/components/Header";
-import PageAccessGate from "@/components/PageAccessGate";
 import PageHeader from "@/components/PageHeader";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { programmeDays } from "@/lib/siteContent";
+import { siteContent } from "@/lib/siteContent";
 
 export default function Programme() {
   return (
-    <PageAccessGate pageKey="programme">
-      <div className="cnp-shell">
-        <Header />
-        <main>
+    <div className="cnp-shell">
+      <Header />
+      <main>
         <PageHeader
           title="Programme"
-          subtitle="Deux jours pour connecter, debattre, celebrer les talents congolais et faire naitre des opportunites."
+          subtitle="Le programme detaille du salon Tonga Mboka est en cours de finalisation. Cette page provisoire permet de garder un point d'entree clair en attendant la publication complete."
         />
 
         <section className="cnp-section">
-          <div className="cnp-container">
-            <div className="mb-8 cnp-card p-8">
-              <p className="cnp-eyebrow">Telechargement</p>
-              <p className="mt-5 max-w-3xl text-lg text-foreground/70">
-                Les visuels definitifs du 23 et du 24 pourront remplacer ces affiches a tout moment.
+          <div className="cnp-container grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+            <div className="rounded-[30px] border border-[#d8e3fb] bg-[linear-gradient(180deg,#f6f9ff,#edf4ff)] p-8 md:p-10">
+              <p className="text-sm uppercase tracking-[0.22em] text-[#234b92]">
+                Page provisoire
               </p>
+              <h2 className="mt-4 cnp-title text-foreground">
+                Le salon se tiendra les {siteContent.dates}
+              </h2>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/74">
+                Le detail des horaires, conferences, master classes, activations, exposition et
+                temps forts culturels sera publie ici tres prochainement. Pour l'instant, retenez
+                la date et reservez votre place.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://my.weezevent.com/congo-na-paris-construire-la-paix"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button className="rounded-full px-6 uppercase">Reserver</Button>
+                </a>
+                <a href={`mailto:${siteContent.email}`}>
+                  <Button variant="outline" className="rounded-full px-6 uppercase">
+                    Contacter l'equipe
+                  </Button>
+                </a>
+              </div>
             </div>
 
-            <div className="grid gap-8 xl:grid-cols-2">
-              {programmeDays.map((day) => (
-                <section key={day.date} className="cnp-card overflow-hidden p-4 md:p-6">
-                  <div className="mb-5 flex items-start justify-between gap-4">
-                    <div>
-                      <p className="cnp-eyebrow">{day.date}</p>
-                      <p className="mt-4 text-foreground/70">{day.intro}</p>
-                    </div>
-                  </div>
-
-                  <img
-                    src="/hero.png"
-                    alt={`Programme ${day.date}`}
-                    className="w-full rounded-[24px] border border-[#ead9cc] object-cover shadow-[0_18px_45px_rgba(75,42,22,0.12)]"
-                  />
-
-                  <div className="mt-5">
-                    <a href="/hero.png" download>
-                      <Button className="rounded-full px-6 uppercase">
-                        Telecharger
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </a>
-                  </div>
-                </section>
-              ))}
+            <div className="cnp-card p-8 md:p-10">
+              <p className="cnp-eyebrow">Infos pratiques</p>
+              <div className="mt-6 space-y-4 text-foreground/78">
+                <div className="cnp-panel px-5 py-4">
+                  <span className="font-semibold text-foreground">Dates:</span> {siteContent.dates}
+                </div>
+                <div className="cnp-panel px-5 py-4">
+                  <span className="font-semibold text-foreground">Horaires:</span> {siteContent.hours}
+                </div>
+                <div className="cnp-panel px-5 py-4">
+                  <span className="font-semibold text-foreground">Lieu:</span> {siteContent.venueSummary}
+                </div>
+                <div className="cnp-panel px-5 py-4">
+                  <span className="font-semibold text-foreground">Acces:</span> {siteContent.venueDetails[0]}
+                </div>
+                <div className="cnp-panel px-5 py-4">
+                  <span className="font-semibold text-foreground">Dimanche:</span> {siteContent.venueDetails[1]}
+                </div>
+              </div>
             </div>
           </div>
         </section>
-        </main>
-        <Footer />
-        <BackToTop />
-      </div>
-    </PageAccessGate>
+      </main>
+      <Footer />
+      <BackToTop />
+    </div>
   );
 }

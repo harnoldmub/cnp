@@ -19,66 +19,179 @@ import bOneLogo from "@assets/B_ONE_LOGO_1765310043574.jpg";
 import afriqueDigitalLogo from "@assets/Afrique_digital_1765310055773.jpg";
 
 export const siteContent = {
-  theme: "Tonga Mboka - Construire la paix et la prosperite partagee",
+  theme: "Construire la paix et la prosperite partagee",
   edition: "8e edition",
   dates: "23 & 24 mai 2026",
   hours: "10h00 - 20h00",
   venue: "Espace Saint Martin",
   address: ["199 bis rue Saint-Martin", "75003 Paris", "France"],
+  venueSummary: "Paris",
+  venueDetails: [
+    "Samedi 23 mai: Espace Saint Martin, 199 bis rue Saint-Martin, 75003 Paris",
+    "Dimanche 24 mai: lieu prive communique aux participants",
+  ],
   email: "contact@congonaparis.fr",
   partnershipEmail: "partenariat@congonaparis.fr",
   projectsEmail: "projets@congonaparis.fr",
   instagram: "congonaparis",
   poster: heroPoster,
+  heroTitle: "Salon socio-economique et culturel Tonga Mboka",
+  heroSubtitle:
+    "Le grand rendez-vous annuel de la diaspora congolaise a Paris. Deux jours pour relier institutions, entrepreneurs, artistes, jeunesse et talents autour d'une ambition commune.",
+  movementTitle: "Congo Na Paris, une diplomatie culturelle et sociale en mouvement",
+  movementIntro:
+    "Depuis 2015, Congo Na Paris agit comme un trait d'union entre les territoires d'origine et les terres d'accueil. Le mouvement relie les diasporas, les institutions, les entrepreneurs, les artistes et les citoyens engages autour d'une meme responsabilite partagee.",
+  movementClaim: "Construire, relier, investir",
+  mainCta: "Reserver ma place",
+  secondaryCta: "Devenir partenaire",
+  contactLead: "Charlotte Kalala",
 };
 
 export const headlinePoints = [
-  "Prises de parole inspirantes",
-  "Echanges business, jeunesse, culture et engagement",
-  "Rencontres a fort impact",
-  "Cocktail networking et spectacle de cloture",
+  "Forum socio-economique, culturel et business",
+  "Hall d'exposition et rencontres professionnelles",
+  "Tables rondes, master classes et temps forts culturels",
+  "Networking, diplomatie culturelle et opportunites concretes",
 ];
 
 export const homeStats = [
-  { value: "2", label: "jours d'immersion" },
-  { value: "4", label: "grands univers" },
-  { value: "1", label: "cocktail networking" },
-  { value: "100%", label: "diaspora connectee" },
+  { value: "+20 500", label: "visiteurs" },
+  { value: "237", label: "stands" },
+  { value: "+130", label: "intervenants" },
+  { value: "7", label: "editions precedentes" },
 ];
 
 export const whyAttend = [
-  "S'inspirer aupres d'intervenants de qualite",
-  "Elargir son reseau avec des profils qualifies",
-  "Identifier des opportunites concretes",
-  "Valoriser la diaspora et ses talents",
+  "Rencontrer les acteurs economiques, institutionnels et culturels des deux Congo",
+  "Trouver des opportunites de business, de cooperation et de visibilite",
+  "Valoriser les talents, les entreprises et les initiatives de la diaspora",
+  "Participer a une dynamique qui lie paix, prosperite et action concrete",
 ];
 
 export const audiences = [
   "Entrepreneurs et porteurs de projets",
-  "Professionnels et decideurs",
-  "Etudiants et jeunes actifs",
+  "Decideurs publics et institutionnels",
+  "Investisseurs, sponsors et marques",
+  "Jeunesse, etudiants et jeunes actifs",
+  "Artistes, creatifs et acteurs culturels",
   "Membres de la diaspora engages",
-  "Toute personne souhaitant se connecter et saisir des opportunites",
+];
+
+export const movementParagraphs = [
+  "Cree en 2015, Congo Na Paris s'est impose comme un espace de diplomatie culturelle et sociale. Plus qu'un salon, c'est un mouvement qui relie les deux Congo, la France et les diasporas autour d'une vision commune.",
+  "Congo Na Paris agit aujourd'hui comme un trait d'union entre les acteurs economiques et les institutions, entre la jeunesse et l'experience, entre les territoires d'origine et les terres d'accueil.",
+  "En 2026, le salon Tonga Mboka devient le point de convergence le plus visible de cet ecosysteme: un rendez-vous concret pour construire, relier et investir.",
+];
+
+export const ecosystemInitiatives = [
+  {
+    title: "Salon Tonga Mboka",
+    label: "Initiative principale",
+    dates: "23-24 mai 2026 - Paris",
+    summary:
+      "Le salon socio-economique et culturel de reference. Deux jours de conferences, exposition, business, culture, networking et rencontres a fort impact pour la diaspora congolaise.",
+    bullets: [
+      "Forum socio-economique et culturel",
+      "Hall d'exposition et activations de marques",
+      "Networking, business lunch et temps forts culturels",
+    ],
+    href: "/programme",
+    tone: "blue",
+    primary: true,
+  },
+  {
+    title: "Programme DARAJA",
+    label: "Initiative associee",
+    dates: "Juin - octobre 2026",
+    summary:
+      "Un programme d'investissement de la diaspora pour financer et accompagner les projets a impact, en particulier dans les secteurs strategiques lies a la transformation locale.",
+    bullets: [
+      "Appel a projets et selection",
+      "Accompagnement, pitch et mise en relation",
+      "Finale et valorisation au sein de CNP 2026",
+    ],
+    href: "/ecosysteme-2026",
+    tone: "brown",
+  },
+  {
+    title: "Voyage Congo",
+    label: "Initiative associee",
+    dates: "6-16 novembre 2026",
+    summary:
+      "Une mission d'immersion economique et culturelle au Congo, ouverte a la diaspora, aux investisseurs et aux creatifs pour reconnecter les projets au terrain.",
+    bullets: [
+      "Brazzaville, Kinshasa, Kolwezi",
+      "Rencontres terrain, ateliers et visites",
+      "Connexion directe avec les acteurs locaux",
+    ],
+    href: "/ecosysteme-2026",
+    tone: "green",
+  },
+];
+
+export const audienceInsights = [
+  {
+    value: "97%",
+    label: "de participants satisfaits",
+    description: "lors de la derniere edition",
+    tone: "blue",
+  },
+  {
+    value: "90%",
+    label: "souhaitent creer ou renforcer",
+    description: "leur lien avec les Congo",
+    tone: "blue",
+  },
+  {
+    value: "65%",
+    label: "preparent leur visite",
+    description: "via les reseaux sociaux",
+    tone: "green",
+  },
+  {
+    value: "69,80 EUR",
+    label: "panier moyen",
+    description: "produits, services, billetterie et restauration",
+    tone: "bronze",
+  },
+];
+
+export const audienceProfiles = [
+  "Visiteurs 18-55 ans, majoritairement actifs, entrepreneurs, familles et reseaux diasporiques",
+  "Exposants venus du Congo, de France et d'Europe pour presenter leurs offres, projets et innovations",
+  "Un public attire par la rencontre directe, l'experience culturelle et les opportunites business reelles",
 ];
 
 export const programHighlights = [
   {
-    title: "Business & opportunites",
+    title: "Business",
     description:
-      "Des conversations directes sur l'entrepreneuriat, l'investissement et les passerelles entre la diaspora et les deux Congo.",
+      "Tables rondes, rencontres B2B, business lunch et opportunites de cooperation pour les acteurs economiques du Congo et de la diaspora.",
     image: conferenceImage,
   },
   {
-    title: "Jeunesse & engagement",
+    title: "Tourisme",
     description:
-      "Une mise en avant des nouvelles generations, de leurs initiatives et de leur role dans la construction d'une prosperite partagee.",
-    image: youthImage,
+      "Des recits, destinations et passerelles pour reconnecter la diaspora aux territoires, aux circuits et aux initiatives locales.",
+    image: heroPoster,
   },
   {
-    title: "Culture & talents",
+    title: "Culture",
     description:
-      "Une programmation qui fait rayonner les talents congolais, la creation et les expressions culturelles qui nous rassemblent.",
+      "Projection, litterature, mode, spectacle, musique et expressions congolaises au coeur de l'experience du salon.",
     image: cultureEditorialImage,
+  },
+  {
+    title: "Dynamique sociale",
+    description:
+      "Diplomatie culturelle, engagement, jeunesse, cohesion sociale et responsabilite partagee comme leviers de transformation.",
+    image: audienceImage,
+  },
+  {
+    title: "Gastronomie",
+    description:
+      "Un hall vivant qui fait dialoguer saveurs, hospitalite, exposition et convivialite dans une experience memorable.",
+    image: networkingImage,
   },
 ];
 
@@ -86,34 +199,34 @@ export const programmeDays = [
   {
     date: "Samedi 23 mai 2026",
     intro:
-      "Journee d'ouverture dediee a la vision, aux connexions et aux opportunites a impact.",
+      "Journee d'ouverture du salon consacree a la vision, aux rencontres institutionnelles et aux grands formats business et culture.",
     items: [
       {
         time: "10:00",
-        title: "Accueil des participants",
+        title: "Accueil et ouverture du salon",
         description:
-          "Ouverture des portes, orientation, accueil des delegations et mise en reseau des participants des l'arrivee.",
+          "Ouverture des portes, accueil des delegations, decouverte du hall d'exposition et mise en relation des participants.",
         image: audienceImage,
       },
       {
         time: "11:00",
-        title: "Ouverture officielle",
+        title: "Session inaugurale Tonga Mboka",
         description:
-          "Lancement de l'edition 8 et prise de hauteur sur le theme Tonga Mboka et la construction d'une paix durable.",
+          "Prises de parole d'ouverture autour du theme Construire la paix et la prosperite partagee.",
         image: conferenceImage,
       },
       {
         time: "14:00",
-        title: "Tables rondes a fort impact",
+        title: "Forum socio-economique",
         description:
-          "Business, jeunesse, culture et engagement au coeur d'echanges directs avec des profils experimentes et inspires.",
+          "Tables rondes et master classes sur investissement, entrepreneuriat, jeunesse, culture et diplomatie economique.",
         image: speakerImage,
       },
       {
         time: "18:30",
-        title: "Cocktail networking",
+        title: "Networking et activations",
         description:
-          "Un temps de connexion privilegie pour transformer les rencontres en collaborations concretes.",
+          "Rencontres B2B, connexions entre exposants, institutions, sponsors et porteurs de projets.",
         image: networkingImage,
       },
     ],
@@ -121,35 +234,35 @@ export const programmeDays = [
   {
     date: "Dimanche 24 mai 2026",
     intro:
-      "Une seconde journee pour approfondir, valoriser les talents et cloturer sur une note culturelle forte.",
+      "Seconde journee du salon dediee a l'experience des univers, a la valorisation des talents et a la cloture culturelle.",
     items: [
       {
         time: "10:00",
-        title: "Rencontres thematiques",
+        title: "Univers d'experience et exposition",
         description:
-          "Des formats plus resserres pour aller a l'essentiel et faire emerger des opportunites reelles entre participants.",
-        image: audienceImage,
+          "Business, tourisme, culture, dynamique sociale et gastronomie se deploient a travers stands, rencontres et formats immersifs.",
+        image: heroPoster,
       },
       {
         time: "13:00",
-        title: "Decouverte de talents congolais",
+        title: "Talents et initiatives congolaises",
         description:
-          "Une mise en lumiere des parcours, projets et initiatives qui font avancer les deux Congo et leur diaspora.",
+          "Mise en lumiere des talents, entreprises, projets et histoires qui incarnent l'energie de la diaspora.",
         image: cultureImage,
       },
       {
         time: "16:00",
-        title: "Paroles d'engagement",
+        title: "Paroles d'engagement et transmission",
         description:
-          "Des interventions pour penser l'avenir avec ambition, responsabilite et esprit de transmission.",
-        image: conferenceImage,
+          "Dialogues entre jeunes, leaders, institutions et entrepreneurs autour d'un Congo durable, inclusif et prospere.",
+        image: audienceImage,
       },
       {
-        time: "20:00",
-        title: "Spectacle de cloture",
+        time: "19:00",
+        title: "Cloture culturelle",
         description:
-          "Un final festif et culturel pour vibrer ensemble au rythme de notre heritage et de notre energie collective.",
-        image: networkingImage,
+          "Final festif et culturel pour prolonger l'experience du salon au-dela des prises de parole.",
+        image: cultureEditorialImage,
       },
     ],
   },
@@ -158,24 +271,24 @@ export const programmeDays = [
 export const speakers = [
   {
     name: "Daniele Sassou Nguesso",
-    role: "Voix institutionnelle et engagement pour le rayonnement congolais",
+    role: "Voix institutionnelle et plaidoyer pour le rayonnement congolais",
     image: danieleSassou,
   },
   {
     name: "Maluma Munongo Claude",
-    role: "Entrepreneuriat, investissement et impact economique",
+    role: "Entrepreneuriat, investissement et transformation economique",
     image: malumaMunongo,
   },
   {
     name: "Yves Kabongo",
-    role: "Leadership diaspora et vision de prosperite partagee",
+    role: "Leadership diaspora et cooperation entre talents et institutions",
     image: yvesKabongo,
   },
 ];
 
 export const partnerCategories = [
   {
-    title: "Partenaires institutionnels et ecosysteme",
+    title: "Partenaires officiels",
     partners: [
       { name: "Divine Conception", logo: divineConceptionLogo },
       { name: "Leopardsfoot", logo: leopardsfootLogo },
@@ -197,62 +310,128 @@ export const partnerCategories = [
 
 export const participationCards = [
   {
-    title: "Billetterie",
+    title: "Visiteur",
     description:
-      "Choisissez votre formule pour vivre une ou deux journees d'experience, de rencontres et de celebration.",
-    cta: "Voir l'experience",
-    href: "#billetterie",
+      "Prenez votre billet pour vivre le salon, explorer les 5 univers et rencontrer les acteurs qui font bouger la diaspora.",
+    cta: "Reserver",
+    href: "https://my.weezevent.com/congo-na-paris-construire-la-paix",
   },
   {
-    title: "Exposer ou activer sa marque",
+    title: "Exposant",
     description:
-      "Associez votre initiative a l'evenement de reference de la diaspora congolaise et gagnez en visibilite a Paris.",
-    cta: "Parler partenariat",
+      "Rejoignez le hall d'exposition pour presenter votre offre, votre marque ou votre projet au coeur de l'evenement.",
+    cta: "Exposer au salon",
     href: `mailto:${siteContent.partnershipEmail}`,
   },
   {
-    title: "Soumettre un projet",
+    title: "Partenaire",
     description:
-      "Presentez une idee, un produit ou une initiative capable de creer des opportunites et de federer la diaspora.",
-    cta: "Deposer un projet",
+      "Associez votre marque a un rendez-vous a forte visibilite et activez votre presence au contact d'un public qualifie.",
+    cta: "Devenir partenaire",
+    href: "/sponsoriser",
+  },
+  {
+    title: "Porteur de projet",
+    description:
+      "Presentez une initiative capable de creer des opportunites concretes pour la diaspora et les territoires congolais.",
+    cta: "Soumettre un projet",
     href: "/soumettre-projet",
   },
+];
+
+export const participationSecondaryCards = [
+  {
+    title: "Programme DARAJA",
+    description:
+      "Une opportunite d'accompagnement et d'investissement pour les projets a impact portes par la diaspora.",
+    href: "/ecosysteme-2026",
+  },
+  {
+    title: "Voyage Congo",
+    description:
+      "Une immersion economique et culturelle pour reconnecter les ambitions de la diaspora au terrain.",
+    href: "/ecosysteme-2026",
+  },
+];
+
+export const partnerBenefits = [
+  {
+    title: "Prospecter de nouveaux clients",
+    text:
+      "Le salon reunit un public qualifie, curieux et engage, compose de visiteurs, entrepreneurs, familles et relais d'influence.",
+  },
+  {
+    title: "Developper votre business",
+    text:
+      "Congo Na Paris rassemble des professionnels, des institutions et des particuliers avec lesquels construire des relations utiles et durables.",
+  },
+  {
+    title: "Activer votre visibilite",
+    text:
+      "Le salon offre une vitrine physique et digitale pour prendre la parole, exposer, diffuser et renforcer votre notoriete.",
+  },
+];
+
+export const partnerSummaryPacks = [
+  {
+    name: "Packs salon",
+    summary:
+      "Des niveaux de partenariat pour soutenir la visibilite, la communication, les badges exposants, les invitations et les activations sur le salon.",
+  },
+  {
+    name: "Services a la carte",
+    summary:
+      "Stand, visibilite, communication, prise de parole, animation, gala et diffusion CNP en ligne adaptes a vos besoins.",
+  },
+  {
+    name: "Partenariats a impact",
+    summary:
+      "Des formats de soutien lies a DARAJA et a l'ecosysteme 2026 pour valoriser un engagement concret envers la prosperite partagee.",
+  },
+];
+
+export const partnerServiceHighlights = [
+  "Stand et surface d'exposition",
+  "Visibilite et communication",
+  "Prise de parole et animation",
+  "Soiree de gala et hospitalite",
+  "Diffusion CNP en ligne",
 ];
 
 export const magazineArticles = [
   {
     id: "1",
     template: "insight",
-    title: "Pourquoi l'edition 8 veut aller a l'essentiel",
+    title: "Pourquoi le salon Tonga Mboka est le coeur de CNP 2026",
     excerpt:
-      "Une journee immersive, des rencontres ciblees et une promesse claire: connecter, inspirer et creer des opportunites concretes.",
+      "Le salon concentre la visibilite, les rencontres et l'energie de tout l'ecosysteme Congo Na Paris 2026.",
     image: conferenceImage,
-    category: "Edition 8",
+    category: "Salon",
     date: "02 avril 2026",
     author: "Redaction CNP Mag",
     readTime: "4 min",
-    heroLabel: "Format",
+    heroLabel: "Salon",
     intro:
-      "L'edition 8 abandonne le superflu pour privilegier les moments qui comptent vraiment: contenu, connexions et opportunites tangibles.",
+      "En 2026, le salon Tonga Mboka devient le point de rencontre principal entre diplomatie culturelle, business, exposition, talents et diaspora.",
     paragraphs: [
-      "Congo Na Paris entre dans une phase de maturite. L'ambition n'est plus seulement de rassembler, mais de proposer une experience plus lisible, plus forte et mieux ciblee pour la diaspora congolaise.",
-      "Le choix d'un format plus direct permet de concentrer l'energie sur ce qui cree de la valeur: des prises de parole inspirantes, des rencontres utiles et une circulation plus fluide entre les univers business, culture, jeunesse et engagement.",
-      "Cette evolution editoriale se retrouve aussi dans l'identite visuelle du site: une base plus sobre, des contrastes plus nets et des sections signature qui marquent les temps forts de l'evenement.",
+      "Congo Na Paris ne se resume pas a un simple evenement. Mais le salon est l'espace ou cette dynamique prend forme de la maniere la plus visible et la plus concrete.",
+      "Pendant deux jours, institutions, entrepreneurs, artistes, exposants, visiteurs et partenaires evoluent dans un meme parcours. Cette concentration de profils donne au salon un role strategique dans l'ecosysteme 2026.",
+      "Le site doit donc mettre le salon au premier plan, tandis que DARAJA et Voyage Congo apparaissent comme des prolongements naturels de cette meme ambition.",
     ],
     keyPoints: [
-      "Un parcours plus simple pour mieux se reperer",
-      "Des rencontres pensees pour l'impact plutot que l'accumulation",
-      "Une mise en scene plus premium et plus lisible",
+      "Deux jours de salon a Paris",
+      "Cinq univers d'experience",
+      "Un carrefour entre culture, economie et diplomatie sociale",
     ],
     pullQuote:
-      "Aller a l'essentiel, c'est permettre a chaque participant de repartir avec une connexion, une idee ou une opportunite concrete.",
+      "Le salon ne remplace pas le mouvement Congo Na Paris. Il lui donne un centre de gravite clair et visible.",
   },
   {
     id: "2",
     template: "feature",
     title: "Tonga Mboka: construire la paix par la connexion",
     excerpt:
-      "Le fil rouge de cette edition relie engagement, culture et prosperite partagee dans un meme mouvement.",
+      "Le theme 2026 relie paix, prosperite partagee, diaspora active et responsabilite collective.",
     image: audienceImage,
     category: "Theme",
     date: "28 mars 2026",
@@ -260,25 +439,25 @@ export const magazineArticles = [
     readTime: "5 min",
     heroLabel: "Theme",
     intro:
-      "Tonga Mboka n'est pas seulement un slogan. C'est une ligne de force qui relie la paix, la responsabilite collective et la capacite a produire ensemble de nouvelles perspectives.",
+      "Tonga Mboka traduit une orientation simple: construire le Congo de demain par le lien, la cooperation et l'action concrere.",
     paragraphs: [
-      "La paix durable ne se construit pas uniquement dans les discours institutionnels. Elle se nourrit aussi de reseaux de confiance, d'espaces de dialogue et de projets capables de reconnecter les energies dispersees.",
-      "Dans le cadre de CNP 8, ce theme devient une invitation concrete: faire se rencontrer les porteurs d'initiatives, les professionnels, les talents et les membres de la diaspora qui veulent agir avec lucidité et ambition.",
-      "Le programme met donc en avant des formats qui croisent parole, transmission et action. Chaque intervention doit contribuer a rendre le theme tangible pour le public.",
+      "La paix ne se decrete pas. Elle se construit a travers le dialogue, la cooperation, la confiance et la creation d'opportunites partagees.",
+      "Dans cette perspective, le salon devient un espace ou les acteurs du terrain, les entrepreneurs, les institutions, les jeunes et les diasporas peuvent se rencontrer avec un objectif plus large que l'evenement lui-meme.",
+      "C'est cette articulation entre culture, economie et responsabilite qui donne au theme 2026 sa force politique, sociale et symbolique.",
     ],
     highlights: [
       { label: "Paix", value: "Dialogue" },
-      { label: "Prosperite", value: "Opportunites" },
       { label: "Diaspora", value: "Connexion" },
+      { label: "Prosperite", value: "Action" },
     ],
     gallery: [speakerImage, conferenceImage, networkingImage],
   },
   {
     id: "3",
     template: "reportage",
-    title: "Les talents congolais au coeur de la programmation",
+    title: "Les talents congolais au coeur du salon",
     excerpt:
-      "Entre prises de parole, decouvertes et temps forts culturels, la scene congolaise occupe une place centrale.",
+      "Le salon met en avant les talents, les savoir-faire et les expressions congolaises comme partie prenante de l'experience globale.",
     image: cultureEditorialImage,
     category: "Culture",
     date: "21 mars 2026",
@@ -286,44 +465,44 @@ export const magazineArticles = [
     readTime: "3 min",
     heroLabel: "Talents",
     intro:
-      "L'une des forces de Congo Na Paris reste sa capacite a mettre en avant des profils, des savoir-faire et des sensibilites qui incarnent la richesse congolaise aujourd'hui.",
+      "A Congo Na Paris, la culture n'est pas un decor. Elle structure l'identite du salon et donne corps a la promesse de diplomatie culturelle.",
     paragraphs: [
-      "La programmation de l'edition 8 ne traite pas la culture comme un decor. Elle la place au centre du recit collectif, au meme niveau que l'entrepreneuriat, le networking et l'engagement.",
-      "Cette approche permet de valoriser autant les parcours individuels que les dynamiques collectives. Elle donne aussi au public un autre rapport a l'evenement: plus sensible, plus incarné, plus memorable.",
-      "Sur le site comme sur l'evenement, cette ligne se traduit par une attention particuliere portee aux visuels, aux voix et aux moments qui font ressortir l'identite congolaise avec dignite et energie.",
+      "Les talents congolais ne sont pas convoques pour illustrer un discours. Ils participent pleinement a la narration de l'evenement, a sa desirabilite et a sa capacite a rassembler.",
+      "Cette place accordee a la culture change la perception du salon: il ne s'agit pas seulement d'un forum business, mais d'un espace ou l'identite, la creativite et la relation humaine circulent ensemble.",
+      "C'est aussi ce qui permet au public de vivre une experience plus forte, plus sensible et plus memorable.",
     ],
     timeline: [
-      { title: "Prises de parole", text: "Des profils inspires pour partager une vision et des experiences concretes." },
-      { title: "Decouverte", text: "Une mise en avant des talents et des initiatives qui font bouger les lignes." },
-      { title: "Cloture", text: "Un final culturel pour faire vivre l'evenement au-dela du contenu." },
+      { title: "Parole", text: "Des voix, des debats et des angles editoriaux qui donnent du sens au salon." },
+      { title: "Presence", text: "Des talents visibles dans l'exposition, les rencontres et les temps forts." },
+      { title: "Cloture", text: "Un final culturel qui prolonge le salon au-dela du contenu strictement institutionnel." },
     ],
   },
   {
     id: "4",
     template: "insight",
-    title: "Networking: transformer les rencontres en opportunites",
+    title: "DARAJA et Voyage Congo: l'apres-salon commence ici",
     excerpt:
-      "Le cocktail et les formats de connexion ont ete penses pour favoriser des echanges utiles et memorables.",
-    image: networkingImage,
-    category: "Reseau",
+      "Au-dela des deux jours a Paris, l'ecosysteme 2026 prolonge l'energie du salon par l'investissement et l'immersion terrain.",
+    image: heroPoster,
+    category: "Ecosysteme 2026",
     date: "15 mars 2026",
     author: "Redaction CNP Mag",
     readTime: "4 min",
-    heroLabel: "Reseau",
+    heroLabel: "Ecosysteme",
     intro:
-      "Le networking n'est pas un simple moment social en marge du programme. Il fait partie de l'architecture meme de l'experience CNP.",
+      "Le salon est le coeur visible de CNP 2026, mais il s'inscrit dans un parcours plus large ou DARAJA et Voyage Congo prennent le relais.",
     paragraphs: [
-      "Le cocktail et les formats de circulation ont ete penses pour faciliter des conversations utiles, rapides et memorables entre profils complementaires.",
-      "L'objectif n'est pas d'accumuler des contacts, mais de permettre des rencontres qui peuvent se transformer en opportunites reelles: projet, mission, recommandation, partenariat ou collaboration.",
-      "Cette logique influence aussi l'interface du site, qui guide plus clairement vers les bons points d'entree: programme, participation, candidature ou billetterie.",
+      "DARAJA vise a orienter des capitaux, de la visibilite et de l'accompagnement vers des projets a impact portes par la diaspora.",
+      "Voyage Congo transforme ensuite l'intention en immersion: terrain, rencontres locales, institutions, entrepreneurs et comprehension directe des contextes.",
+      "Ensemble, ces initiatives montrent que CNP 2026 ne veut pas seulement rassembler, mais faire circuler l'action entre Paris et les Congo.",
     ],
     keyPoints: [
-      "Des formats favorables aux echanges directs",
-      "Un environnement propice aux mises en relation ciblees",
-      "Une experience pensee pour prolonger la rencontre apres l'evenement",
+      "Le salon comme point de rencontre",
+      "DARAJA comme levier de transformation",
+      "Voyage Congo comme passage a l'action",
     ],
     pullQuote:
-      "Une bonne rencontre vaut souvent plus qu'une longue liste de contacts. CNP veut creer ce type de declic.",
+      "Le salon donne l'impulsion. DARAJA et Voyage Congo donnent la profondeur et la suite.",
   },
 ];
 

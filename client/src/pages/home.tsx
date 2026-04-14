@@ -5,6 +5,8 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import BilletterieCTA from "@/components/BilletterieCTA";
 import ActionCards from "@/components/ActionCards";
 import MagazineSection from "@/components/MagazineSection";
+import InitiativesOverview from "@/components/InitiativesOverview";
+import AudienceInsights from "@/components/AudienceInsights";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import PageAccessGate from "@/components/PageAccessGate";
@@ -18,8 +20,10 @@ export default function Home() {
           <Hero />
           <StatsBar />
           <WhyChooseUs />
+          <InitiativesOverview />
           <BilletterieCTA />
           <ActionCards />
+          <AudienceInsights />
           <MagazineSection />
         </main>
         <Footer />

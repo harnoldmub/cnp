@@ -48,9 +48,13 @@ export default function Footer() {
             </p>
 
             <div className="rounded-[26px] border border-white/10 bg-white/[0.03] p-5">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary">Adresse</p>
-              <p className="mt-3 text-2xl font-semibold text-white">{siteContent.venue}</p>
-              <p className="mt-2 max-w-xl text-white/65">{siteContent.address.join(", ")}</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-primary">Lieux</p>
+              <p className="mt-3 text-2xl font-semibold text-white">{siteContent.venueSummary}</p>
+              <div className="mt-2 space-y-2 max-w-xl text-white/65">
+                {siteContent.venueDetails.map((detail) => (
+                  <p key={detail}>{detail}</p>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-3 text-sm">
@@ -130,7 +134,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-5 text-center text-sm text-white/38">
-        Congo Na Paris 8e edition • 23 & 24 mai 2026 • Espace Saint Martin, Paris
+        Congo Na Paris 8e edition • 23 & 24 mai 2026 • Paris
       </div>
     </footer>
   );

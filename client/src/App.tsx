@@ -15,6 +15,8 @@ import Magazine from "@/pages/magazine";
 import AdminPage from "@/pages/admin";
 import SoumettreProjet from "@/pages/soumettre-projet";
 import ProjetSoumis from "@/pages/projet-soumis";
+import Ecosysteme2026 from "@/pages/ecosysteme-2026";
+import Sponsoriser from "@/pages/sponsoriser";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -27,6 +29,8 @@ function Router() {
       <Route path="/intervenants" component={Intervenants} />
       <Route path="/partenaires" component={Partenaires} />
       <Route path="/participer" component={Participer} />
+      <Route path="/ecosysteme-2026" component={Ecosysteme2026} />
+      <Route path="/sponsoriser" component={Sponsoriser} />
       <Route path="/magazine" component={Magazine} />
       <Route path="/magazine/:id" component={Magazine} />
       <Route path="/admin" component={AdminPage} />
